@@ -1,0 +1,412 @@
+/* Wrapper */
+
+body {
+    background-color: #f8f8f8;
+}
+
+#wrapper {
+    width: 100%;
+}
+
+#page-wrapper {
+    min-height: 498px;
+    padding: 0 15px;
+    min-height: 568px;
+    background-color: white;
+}
+
+.hr-no-margin {
+    margin: 0px;
+}
+
+.clear {
+    clear: both;
+}
+
+.huge {
+    font-size: 50px;
+    line-height: normal;
+}
+
+
+/* Top Navigation */
+
+.title-home {
+    font-size: 24px;
+    font-weight: bold;
+    color: #337ab7 !important;
+}
+
+.navbar-top-links {
+    margin-right: 0;
+}
+
+.navbar-top-links li {
+    display: inline-block;
+}
+
+.navbar-top-links li a {
+    padding: 15px;
+    min-height: 50px;
+}
+
+.navbar-top-links .dropdown-messages {
+    margin-left: 5px;
+}
+
+.navbar-top-links .dropdown-messages,
+.navbar-top-links .dropdown-tasks,
+.navbar-top-links .dropdown-alerts {
+    width: 310px;
+    min-width: 0;
+}
+
+.navbar-top-links .dropdown-menu li {
+    display: block;
+}
+
+.navbar-top-links .dropdown-menu li a {
+    padding: 3px 20px;
+    min-height: 0;
+}
+
+.navbar-top-links .dropdown-menu li a div {
+    white-space: normal;
+}
+
+.cart-badge {
+    background: red;
+    margin-bottom: 5px;
+}
+
+
+/* Side Navigation */
+
+.sidebar .sidebar-nav.navbar-collapse {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.sidebar .arrow {
+    float: right;
+}
+
+.sidebar .fa.arrow:before {
+    content: "\f104";
+}
+
+.sidebar .sidebar-search {
+    padding: 15px;
+}
+
+.sidebar ul li {
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.sidebar ul li a.active {
+    background-color: #eeeeee;
+}
+
+.sidebar .nav-second-level li,
+.sidebar .nav-third-level li {
+    border-bottom: none !important;
+}
+
+.sidebar .nav-second-level li a {
+    padding-left: 37px;
+}
+
+.sidebar .nav-second-level li,
+.sidebar .nav-third-level li {
+    border-bottom: none !important;
+}
+
+.sidebar .nav-third-level li a {
+    padding-left: 52px;
+}
+
+
+/* Home */
+
+.panel-green {
+    border-color: #5cb85c;
+}
+
+.panel-green>.panel-heading {
+    border-color: #5cb85c;
+    color: white;
+    background-color: #5cb85c;
+}
+
+.panel-yellow {
+    border-color: #f0ad4e;
+}
+
+.panel-yellow>.panel-heading {
+    border-color: #f0ad4e;
+    color: white;
+    background-color: #f0ad4e;
+}
+
+.panel-red {
+    border-color: #d9534f;
+}
+
+.panel-red>.panel-heading {
+    border-color: #d9534f;
+    color: white;
+    background-color: #d9534f;
+}
+
+
+/* Page login */
+
+.page-blank {
+    padding: 50px 20px;
+    margin: 0px 15%;
+    min-height: 500px;
+    background: white;
+}
+
+.panel-login {
+    padding: 0px;
+}
+
+#loginForm {
+    padding: 30px 40px;
+}
+
+
+/* Title table */
+
+.filterable .panel-heading .pull-right {
+    margin-top: -20px;
+}
+
+.filterable .search input[disabled] {
+    background-color: transparent;
+    border: none;
+    cursor: auto;
+    box-shadow: none;
+    padding: 0;
+    height: auto;
+}
+
+.filterable .search input[disabled]::-webkit-input-placeholder {
+    color: #333;
+}
+
+.filterable .search input[disabled]::-moz-placeholder {
+    color: #333;
+}
+
+.filterable .search input[disabled]:-ms-input-placeholder {
+    color: #333;
+}
+
+.breadcrumb.bc-no-margin {
+    margin-bottom: 10px;
+}
+
+#searchUser {
+    border: none;
+    width: 100px;
+}
+
+#searchUser:focus {
+    outline: none;
+}
+
+#searchUser.active {
+    background-color: red;
+    color: white;
+}
+
+#searchUser.no-active {
+    background-color: white;
+    color: black;
+}
+
+.link-plus .glyphicon {
+    top: 2px;
+}
+
+.row-chan {
+    background: gainsboro
+}
+
+.row-le {
+    background: white
+}
+
+
+/* Group input */
+
+.info-register {
+    margin: 20px 0px;
+}
+
+.info-register.fade.in {
+    height: auto;
+    display: block;
+    margin-top: 20px;
+}
+
+.info-register.fade {
+    height: 0px;
+    display: none;
+}
+
+.link-tab {
+    border: none !important;
+}
+
+.item-cbb {
+    height: 30px;
+    border: thin solid darkgray;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.item-cbb:focus {
+    outline: none;
+}
+
+#pickcolor {
+    background: white;
+    padding: 2px 10px !important;
+    width: 60%;
+    height: 30px;
+    border: thin solid darkgray !important;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.color-picker {
+    width: 245px;
+    background: #f3f3f3;
+    height: 215px;
+    padding: 5px;
+    border: 1px solid darkgray;
+    box-shadow: 0px 0px 3px 1px #ddd;
+    position: absolute;
+    top: 33px;
+    left: 4%;
+    z-index: 1;
+}
+
+.color-holder {
+    background: #fff;
+    cursor: pointer;
+    border: thin solid darkgray;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    width: 40px;
+    padding: 5px 15px;
+    margin-left: 5px;
+}
+
+.color-picker .color-item {
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    list-style-type: none;
+    float: left;
+    margin: 2px;
+    border: 1px solid #ddd;
+}
+
+.color-picker .color-item:hover {
+    border: 1px solid #666;
+    opacity: 0.8;
+    -moz-opacity: 0.8;
+    filter: alpha(opacity=8);
+}
+
+.label-href {
+    text-align: left;
+}
+
+.image-product {
+    width: 50%;
+}
+
+.image-category,
+.image-banner {
+    width: 60%;
+}
+
+.pagenition {
+    padding: 20px 0px;
+    float: right;
+    font-size: 18px;
+}
+
+.pagenition a {
+    color: #666;
+    padding: 0px 5px;
+}
+
+.current {
+    color: red;
+    padding: 0px 5px;
+}
+
+.close {
+    color: white;
+    opacity: 1;
+    font-size: 32px;
+}
+
+.close:focus {
+    outline: none;
+}
+
+.modal-header {
+    padding: 30px 50px;
+    background: #337ab7 !important;
+    color: white;
+}
+
+.title-checkout {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.btn:focus {
+    outline: none !important;
+}
+
+.error {
+    border: 2px solid red;
+}
+
+@media(min-width:768px) {
+    #page-wrapper {
+        position: inherit;
+        margin: 0 0 0 250px;
+        border-left: 1px solid #e7e7e7;
+    }
+    .sidebar {
+        z-index: 1;
+        position: absolute;
+        width: 250px;
+        margin-top: 51px;
+    }
+    .navbar-top-links .dropdown-messages,
+    .navbar-top-links .dropdown-tasks,
+    .navbar-top-links .dropdown-alerts {
+        margin-left: auto;
+    }
+}

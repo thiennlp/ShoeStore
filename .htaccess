@@ -1,0 +1,22 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^category/(.*)-(.*)/(.*)-(.*)/(.*)$	    ?page=category&category=$2&catid=$4&trang=$5 [NC,L]
+RewriteRule ^category/(.*)-(.*)/(.*)/(.*)$	        ?page=category&category=$2&catid=$3&trang=$4 [NC,L]
+RewriteRule ^category/(.*)-(.*)$		            ?page=category&category=$2 [NC,L]
+RewriteRule ^cart/delete-(.*)$		                ?page=cart&act=del&item=$1 [NC,L]
+RewriteRule ^search-(.*)/(.*)$			            ?page=search&key=$1&trang=$2 [NC,L]
+RewriteRule ^product/(.*)-(.*)$		                ?page=product&product=$2 [NC,L]
+RewriteRule ^login$					                ?page=login [NC,L]
+RewriteRule ^cart$					                ?page=cart [NC,L]
+RewriteRule ^register$					            ?page=register [NC,L]
+RewriteRule ^logout$					            ?page=logout [NC,L]
+RewriteRule ^help-(.*)$					            ?page=help&help=$1 [NC,L]
+RewriteRule ^help$					                ?page=help [NC,L]
+RewriteRule ^about-(.*)$					        ?page=about&about=$1 [NC,L]
+RewriteRule ^about$					                ?page=about [NC,L]
+RewriteRule ^store-(.*)$					        ?page=store&store=$1 [NC,L]
+RewriteRule ^store$					                ?page=store [NC,L]
+RewriteRule ^checkout$					            ?page=checkout [NC,L]
+RewriteRule ^home$						            /index.php [NC,L]

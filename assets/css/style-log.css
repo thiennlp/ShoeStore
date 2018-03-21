@@ -1,0 +1,240 @@
+.title-login {
+    border-bottom: 2px solid #999;
+    padding-bottom: 20px;
+}
+
+.panel-to-login {
+    border-bottom: 1px solid #999;
+    padding: 20px 0px;
+}
+
+.content-register {
+    padding-top: 30px;
+    float: left;
+    padding-bottom: 75px;
+    margin-bottom: 40px;
+}
+
+.to-register {
+    margin: 10px 0px;
+}
+
+#btn-to-login {
+    background: orangered;
+    border: none;
+    padding: 15px 0px;
+    color: white;
+    width: 20%;
+}
+
+#btn-to-save {
+    background: orangered;
+    border: none;
+    padding: 15px 0px;
+    color: white;
+    width: 20%;
+    float: right;
+}
+
+.omb_register .omb_authTitle {
+    text-align: center;
+    line-height: 200%;
+    width: 73%;
+}
+
+.omb_register .omb_socialButtons a {
+    color: white;
+    opacity: 0.9;
+}
+
+.omb_register .omb_socialButtons a:hover {
+    color: white;
+    opacity: 1;
+}
+
+.omb_register .omb_socialButtons .omb_btn-facebook {
+    background: #3b5998;
+}
+
+.omb_register .omb_socialButtons .omb_btn-twitter {
+    background: #00aced;
+}
+
+.omb_register .omb_socialButtons .omb_btn-google {
+    background: #c32f10;
+}
+
+.omb_register .omb_loginOr {
+    position: relative;
+    font-size: 1.5em;
+    color: #aaa;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.omb_register .omb_loginOr .omb_hrOr {
+    background-color: #cdcdcd;
+    height: 1px;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+.omb_register .omb_loginOr .omb_spanOr {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: -0.6em;
+    margin-left: -1.5em;
+    background-color: white;
+    width: 3em;
+    text-align: center;
+}
+
+.omb_register .omb_loginForm .form-group.i {
+    width: 2em;
+}
+
+.omb_forgotPwd {
+    float: right;
+}
+
+.title-login {
+    border-bottom: 2px solid #999;
+    padding-bottom: 20px;
+}
+
+.content-login {
+    padding-top: 30px;
+    float: left;
+    padding-bottom: 75px;
+    margin-bottom: 30px;
+}
+
+.omb_login {
+    border-right: 2px solid #999;
+}
+
+.to-register {
+    margin: 10px 0px;
+}
+
+#btn-to-login,
+#btn-to-register {
+    background: orangered;
+    width: 100%;
+    border: none;
+    padding: 15px 0px;
+    color: white;
+}
+
+.omb_login .omb_authTitle {
+    text-align: center;
+    line-height: 200%;
+    width: 73%;
+}
+
+.omb_login .omb_socialButtons a {
+    color: white;
+    opacity: 0.9;
+}
+
+.omb_login .omb_socialButtons a:hover {
+    color: white;
+    opacity: 1;
+}
+
+.omb_login .omb_socialButtons .omb_btn-facebook {
+    background: #3b5998;
+}
+
+.omb_login .omb_socialButtons .omb_btn-twitter {
+    background: #00aced;
+}
+
+.omb_login .omb_socialButtons .omb_btn-google {
+    background: #c32f10;
+}
+
+.omb_login .omb_loginOr {
+    position: relative;
+    font-size: 1.5em;
+    color: #aaa;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.omb_login .omb_loginOr .omb_hrOr {
+    background-color: #cdcdcd;
+    height: 1px;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+.omb_login .omb_loginOr .omb_spanOr {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: -0.6em;
+    margin-left: -1.5em;
+    background-color: white;
+    width: 3em;
+    text-align: center;
+}
+
+.omb_login .omb_loginForm .form-group.i {
+    width: 2em;
+}
+
+.omb_forgotPwd {
+    float: right;
+}
+
+.omb_checkout {
+    border-right: none;
+}
+
+.checkout-note {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.title-checkout {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.close {
+    color: white;
+    opacity: 1;
+    font-size: 32px;
+}
+
+.close:focus {
+    outline: none;
+}
+
+.label-option {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.option-checkout {
+    margin: 10px 0px;
+    border-top: thin solid #999;
+    padding-top: 10px;
+}
+
+.modal-header {
+    padding: 30px 50px;
+    background: orangered;
+}
+
+.modal-report p {
+    font-size: 18px;
+}
