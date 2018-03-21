@@ -1,4 +1,4 @@
-<!--New Feature-->
+<!--Welcome-->
 <div id="feature" class="container">
     <div class="container">
         <div class="row" id="slider-text">
@@ -8,27 +8,19 @@
         </div>
     </div>
     <div class="row">
-        <!-- Carousel -->
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
             <ol class="carousel-indicators">
-                <?php
-                for ($i = 0; $i < count($data); $i++) {
-                    ?>
+                <?php for ($i = 0; $i < count($banner); $i++) : ?>
                     <li data-target="#carousel-example-generic" data-slide-to="<?php echo $i; ?>" <?php echo $i == 0 ? 'class="active"' : '' ?>></li>
-                    <?php
-                }
-                ?>
+                <?php endfor; ?>
             </ol>
-            <!-- Wrapper for slides -->
             <div class="carousel-inner carousel-banner">
-                <?php
-                for ($i = 0; $i < count($data); $i++) {
-                    $name_category = selectData("category", "id_category = '" . $data[$i][3] . "'", "category");
-                    ?>
-                    <div class="item <?php echo $i == 0 ? 'active' : '' ?>">
-                        <a href="/category/<?php echo str_replace(" ", '-', $name_category[0][0]); ?>-<?php echo $data[$i][3]; ?>"><img src="/admin/<?php echo $data[$i][1]; ?>" alt=""></a>
-                        <!-- Static Header -->
+                <?php foreach ($banner as $key => $item_banner) : ?>
+                    <?php $name_category = selectData("category", "id_category = '" . $item_banner['id_category'] . "'", "*"); ?>
+                    <div class="item <?php echo $key == 0 ? 'active' : '' ?>">
+                        <a href="/category/<?php echo str_replace(" ", '-', $name_category[0]['category']); ?>-<?php echo $item_banner['id_category']; ?>">
+                            <img src="/admin/<?php echo $item_banner['image']; ?>" alt="<?php echo $name_category[0]['category']; ?>">
+                        </a>
                         <div class="header-text hidden-xs">
                             <div class="col-md-12 text-center">
                                 <h2>
@@ -36,26 +28,24 @@
                                 </h2>
                                 <br>
                                 <div class="">
-                                    <a class="btn btn-theme btn-sm btn-min-block" href="/login"><?php echo $var_login; ?></a><a class="btn btn-theme btn-sm btn-min-block" href="/register"><?php echo $var_register; ?></a></div>
+                                    <a class="btn btn-theme btn-sm btn-min-block" href="/login"><?php echo $var_login; ?></a>
+                                    <a class="btn btn-theme btn-sm btn-min-block" href="/register"><?php echo $var_register; ?></a>
+                                </div>
                             </div>
-                        </div><!-- /header-text -->
+                        </div>
                     </div>
-                    <?php
-                }
-                ?>
+                <?php endforeach; ?>
             </div>
-            <!-- Controls -->
             <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
                 <i class="fa fa-chevron-left" aria-hidden="true"></i>
             </a>
             <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
                 <i class="fa fa-chevron-right" aria-hidden="true"></i>
             </a>
-            <!--.Carousel-->
-        </div><!-- /carousel -->
+        </div>
     </div>
 </div>
-<!--/New Feature-->
+<!--/Welcome-->
 <!--Best-->
 <?php if (!empty($arr_product_best) && count($arr_product_best) >= 9) : ?>
     <div class="container">
@@ -320,3 +310,56 @@
     </div>
 <?php endif; ?>
 <!--/Recommend-->
+
+<?php if (empty($arr_product_recommend)) : ?>
+    <div class="container">
+        <div class="container">
+            <div class="row" id="slider-text">
+                <div class="col-md-6" >
+                    <h2><strong><?php echo $var_recommend; ?></strong></h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="reCarousel" class="carousel slide">
+                    <ol class="carousel-indicators">
+                        <?php for ($i = 0; $i < count($arr_product_recommend) / 3; $i++) : ?>
+                            <li data-target="#reCarousel" data-slide-to="<?php echo $i; ?>" class="<?php echo $i == 0 ? 'active' : ''; ?>"></li>
+                        <?php endfor; ?>
+                    </ol>
+                    <!-- Carousel items -->
+                    <div class="carousel-inner">
+                        <!--Slide-->
+                        <?php foreach ($arr_product_recommend as $key => $item_product_recommend) : ?>
+                            <?php if (in_array($key, array(0, 3, 6))) : ?>
+                                <div class="item <?php echo $key == 0 ? 'active' : '' ?>">
+                                <?php endif; ?>
+                                <?php echo $key == 0 ? '<div class="row">' : ''; ?>
+                                <div class="col-sm-4 col-lg-4 col-md-4">
+                                    <div class="thumbnail thumbnail-product">
+                                        <a href="<?php echo xllink("product", $item_product_recommend['product'], $item_product_recommend['id_product']) ?>">
+                                            <img src="<?php echo './admin/' . $item_product_recommend['image']; ?>" alt="">
+                                        </a>
+                                        <div class="caption caption-product caption-recommend">
+                                            <h5>
+                                                <a href="<?php echo xllink("product", $item_product_recommend['product'], $item_product_recommend['id_product']) ?>"><?php echo $item_product_recommend['product']; ?></a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php echo $key == 2 ? '</div>' : ''; ?>
+                                <?php if (in_array($key, array(2, 5, 8))) : ?>
+                                </div>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                        <!--/Slide-->
+                    </div>
+                    <a data-slide="prev" href="#reCarousel" class="left carousel-control"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+                    <a data-slide="next" href="#reCarousel" class="right carousel-control"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

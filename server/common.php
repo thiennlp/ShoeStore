@@ -26,25 +26,59 @@ function selectData($table, $condition, $field = '*') {
     return $list;
 }
 
-//------ Insert record in table $table with value -----
+/**
+ *
+ * Insert data to database
+ *
+ * @param string $table table
+ * @param string $column column
+ * @param string $value value
+ * 
+ * @return boolean
+ */
 function insertData($table, $column, $value) {
     global $mysqli;
     return $query = $mysqli->query("INSERT INTO $table($column) VALUES ($value)");
 }
 
-//------ Update record in table $table with value in condition $where -----
+/**
+ *
+ * Update record in table $table with value in condition $where
+ *
+ * @param string $table table
+ * @param string $set set
+ * @param string $where where
+ * 
+ * @return boolean
+ */
 function updateData($table, $set, $where) {
     global $mysqli;
     return $query = $mysqli->query("UPDATE $table SET $set  WHERE $where");
 }
 
-//----------------Delete record from table---------------------------//	
+/**
+ *
+ * Delete record from table
+ *
+ * @param string $table table
+ * @param string $where where
+ * 
+ * @return boolean
+ */
 function deleteData($table, $where) {
     global $mysqli;
     return $query = $mysqli->query("DELETE FROM $table WHERE $where");
 }
 
-//----------------Add bill---------------------------//	
+/**
+ *
+ * Add bill
+ *
+ * @param string $cart cart
+ * @param string $id id
+ * @param string $note note
+ * 
+ */
 function addBill($cart, $id, $note = '') {
     $total_bill = 0;
     $date = time();
@@ -101,7 +135,14 @@ function addBill($cart, $id, $note = '') {
         </script>";
 }
 
-//----------------Display notice-----------------//
+/**
+ *
+ * Display notice
+ *
+ * @param string $class_alert class_alert
+ * @param string $content_notice content_notice
+ * 
+ */
 function modalInfo($class_alert, $content_notice) {
     ?>
     <!-- Modal -->
@@ -123,6 +164,15 @@ function modalInfo($class_alert, $content_notice) {
     <?php
 }
 
+/**
+ *
+ * Display modal confirm
+ *
+ * @param string $table table
+ * @param string $where where
+ * @param string $url url
+ * 
+ */
 function modalConfirm($table, $where, $url) {
     //-----------------Event click Del-----------------------------------------------------
     if (isset($_POST['btn-del'])) {
@@ -160,7 +210,14 @@ function modalConfirm($table, $where, $url) {
     <?php
 }
 
-//----------------Get Value Input by JS---------------------------//	
+/**
+ *
+ * Get Value Input by JS
+ *
+ * @param string $id id
+ *
+ * @return string 
+ */
 function getValue($id) {
     ?>
     <script>
@@ -169,7 +226,14 @@ function getValue($id) {
     <?php
 }
 
-//----------------Get data from database---------------------------//	
+/**
+ *
+ * Get data from database
+ *
+ * @param string $str
+ *
+ * @return string 
+ */
 function bodau($str) {
     // In thường
     $str = preg_replace("/(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)/", 'a', $str);
@@ -215,15 +279,35 @@ function bodau($str) {
     return $str; // Trả về chuỗi đã chuyển
 }
 
-//----------------XỬ LÝ LINK SẢN PHẨM--------------------------//	
+/**
+ *
+ * XỬ LÝ LINK SẢN PHẨM
+ *
+ * @param string $a
+ * @param string $title
+ * @param string $id
+ *
+ * @return string 
+ */
 function xllink($a, $title, $id) {
     $title = bodau($title);
     $url = "/{$a}/{$title}-{$id}";
     return $url;
 }
 
-//----------------Phân trang hiển thị---------------------------//
+/**
+ *
+ * Phân trang hiển thị
+ *
+ * @param string $self
+ * @param string $page_total
+ * @param string $page_limit
+ * @param string $page_num
+ *
+ * @return html 
+ */
 function setPage($self, $page_total, $page_limit, $page_num) {
+    DIE;
     $numofpages = ceil($page_total / $page_limit);
     if ($numofpages > '1') {
         $range = 4;
@@ -272,6 +356,14 @@ function setPage($self, $page_total, $page_limit, $page_num) {
     return $page_pagination;
 }
 
+/**
+ *
+ * Set language
+ *
+ * @param string $language
+ *
+ * @return string 
+ */
 function setLang($language) {
     $_SESSION['lang'] = true;
     if ($language) {
@@ -283,6 +375,12 @@ function setLang($language) {
     }
 }
 
+/**
+ *
+ * curPageURL
+ *
+ * @return string 
+ */
 function curPageURL() {
     $pageURL = 'http';
     if ($_SERVER["HTTPS"] == "on") {

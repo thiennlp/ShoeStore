@@ -6,10 +6,9 @@ include_once("common.php");
 $pp = 30; // Số sản phẩm hiển thị trên 1 trang
 //----------------Get number page surrent-----------------//	
 $trang = intval($_GET['trang']);
-if (!$trang)
-    $trang = 1; //Lấy gái trị trang hiện tại
-
-    
+if (!$trang) {
+    $trang = 1; //Lấy gía trị trang hiện tại
+}
 //----------------Get page surrent-----------------//
 //---------------------Xử lý hiển thị theo page-------------//
 if ($page == 'product') {
@@ -117,7 +116,7 @@ if ($page == 'product') {
     reset($cart);
     header("Location: /home");
 } elseif ($page == 'about') {
-    $arr_about = selectData('about');
+    $arr_about = selectData('about', '', '*');
     $title = selectData("title", "page = 'about'", "*");
     if ($title) {
         $web_title = $_SESSION['lang'] == 'english' ? ($title[0][2] ? $title[0][2] : $title[0][1]) : $title[0][1];
@@ -129,7 +128,7 @@ if ($page == 'product') {
         $web_desc = '';
     }
 } elseif ($page == 'help') {
-    $arr_help = selectData('help');
+    $arr_help = selectData('help', '', '*');
     $title = selectData("title", "page = 'help'", "*");
     if ($title) {
         $web_title = $_SESSION['lang'] == 'english' ? ($title[0][2] ? $title[0][2] : $title[0][1]) : $title[0][1];
@@ -141,7 +140,7 @@ if ($page == 'product') {
         $web_desc = '';
     }
 } elseif ($page == 'store') {
-    $arr_store = selectData('store');
+    $arr_store = selectData('store', '', '*');
     $title = selectData("title", "page = 'store'", "*");
     if ($title) {
         $web_title = $_SESSION['lang'] == 'english' ? ($title[0][2] ? $title[0][2] : $title[0][1]) : $title[0][1];
@@ -153,7 +152,7 @@ if ($page == 'product') {
         $web_desc = '';
     }
 } else {
-    $data = selectData("banner", "is_display = 1", "*");
+    $banner = selectData("banner", "is_display = 1", "*");
     $arr_product_recommend = selectData('product JOIN detail ON product.id_product=detail.id_product', '1=1 ORDER BY date_up DESC LIMIT 0,9');
     $arr_product_recommend = isset($arr_product_recommend) ? $arr_product_recommend : array();
     $arr_product_sales = selectData('product JOIN campaign ON product.id_product = campaign.id_product JOIN detail ON product.id_product=detail.id_product', 'campaign.is_campaign = 1 ORDER BY date_up DESC LIMIT 0,9');

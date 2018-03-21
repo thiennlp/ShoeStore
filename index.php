@@ -43,7 +43,7 @@ include_once($lang);
     <body>
         <div id="wrapper">
             <!--Header-->
-            <?php include("page/header.php") ?>
+            <?php include("theme/header.php") ?>
             <!--/Header-->
             <!--Main-->
             <main>
@@ -60,7 +60,7 @@ include_once($lang);
             </main>
             <!--/Main-->
             <!--Footer-->
-            <?php include("page/footer.php") ?>
+            <?php include("theme/footer.php") ?>
             <!--/Footer-->
             <button onclick="topFunction()" id="back-top" title="Go to top">TOP</button>
         </div>
