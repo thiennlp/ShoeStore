@@ -223,7 +223,7 @@
 <?php endif; ?>
 <!--/Sales-->
 <!--Recommend-->
-<?php if (!empty($arr_product_recommend)) : ?>
+<?php if (!empty($arr_product_recommend) && count($arr_product_recommend) >= 9) : ?>
     <div class="container">
         <div class="container">
             <div class="row" id="slider-text">
@@ -237,9 +237,9 @@
                 <div id="reCarousel" class="carousel slide">
 
                     <ol class="carousel-indicators">
-                        <li data-target="#reCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#reCarousel" data-slide-to="1"></li>
-                        <li data-target="#reCarousel" data-slide-to="2"></li>
+                        <?php for ($i = 0; $i < count($arr_product_recommend) / 3; $i++) : ?>
+                            <li data-target="#reCarousel" data-slide-to="<?php echo $i; ?>" class="<?php echo $i == 0 ? 'active' : ''; ?>"></li>
+                        <?php endfor; ?>
                     </ol>
 
                     <!-- Carousel items -->
@@ -310,56 +310,3 @@
     </div>
 <?php endif; ?>
 <!--/Recommend-->
-
-<?php if (empty($arr_product_recommend)) : ?>
-    <div class="container">
-        <div class="container">
-            <div class="row" id="slider-text">
-                <div class="col-md-6" >
-                    <h2><strong><?php echo $var_recommend; ?></strong></h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div id="reCarousel" class="carousel slide">
-                    <ol class="carousel-indicators">
-                        <?php for ($i = 0; $i < count($arr_product_recommend) / 3; $i++) : ?>
-                            <li data-target="#reCarousel" data-slide-to="<?php echo $i; ?>" class="<?php echo $i == 0 ? 'active' : ''; ?>"></li>
-                        <?php endfor; ?>
-                    </ol>
-                    <!-- Carousel items -->
-                    <div class="carousel-inner">
-                        <!--Slide-->
-                        <?php foreach ($arr_product_recommend as $key => $item_product_recommend) : ?>
-                            <?php if (in_array($key, array(0, 3, 6))) : ?>
-                                <div class="item <?php echo $key == 0 ? 'active' : '' ?>">
-                                <?php endif; ?>
-                                <?php echo $key == 0 ? '<div class="row">' : ''; ?>
-                                <div class="col-sm-4 col-lg-4 col-md-4">
-                                    <div class="thumbnail thumbnail-product">
-                                        <a href="<?php echo xllink("product", $item_product_recommend['product'], $item_product_recommend['id_product']) ?>">
-                                            <img src="<?php echo './admin/' . $item_product_recommend['image']; ?>" alt="">
-                                        </a>
-                                        <div class="caption caption-product caption-recommend">
-                                            <h5>
-                                                <a href="<?php echo xllink("product", $item_product_recommend['product'], $item_product_recommend['id_product']) ?>"><?php echo $item_product_recommend['product']; ?></a>
-                                            </h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <?php echo $key == 2 ? '</div>' : ''; ?>
-                                <?php if (in_array($key, array(2, 5, 8))) : ?>
-                                </div>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
-                        <!--/Slide-->
-                    </div>
-                    <a data-slide="prev" href="#reCarousel" class="left carousel-control"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
-                    <a data-slide="next" href="#reCarousel" class="right carousel-control"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
-                </div>
-
-            </div>
-        </div>
-    </div>
-<?php endif; ?>

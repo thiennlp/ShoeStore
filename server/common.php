@@ -10,7 +10,7 @@
  * 
  * @return array $list
  */
-function selectData($table, $condition, $field = '*') {
+function selectData($table, $condition = '', $field = '*') {
     global $mysqli;
     $list = array();
     $sql = "SELECT $field FROM $table WHERE $condition";
@@ -394,4 +394,6 @@ function curPageURL() {
     }
     return $pageURL;
 }
+
 ?>
+

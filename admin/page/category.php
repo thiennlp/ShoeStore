@@ -9,11 +9,10 @@ if (isset($_GET['level'])) {
     <div class="col-lg-12">
         <ol class="breadcrumb bc-no-margin">
             <li>
-                <i class="fa fa-dashboard"></i>  <a href="#">Trang chủ</a>
+                <i class="fa fa-dashboard"></i>
+                <a href="/admin/">Trang chủ</a>
             </li>
-            <li class="active">
-                <i class="fa fa-fw fa-wrench"></i> Người dùng
-            </li>
+            <li class="active"><i class="fa fa-fw fa-wrench"></i>Category</li>
         </ol>
     </div>
 </div>
@@ -22,17 +21,10 @@ if (isset($_GET['level'])) {
     <div class="col-md-12">
         <?php
         if ($act == 'add') {
-            //-----------------------Get data from database for Select input----------------------------------
-            $datadm = selectData("category", "level = 0", "id_category, category");
-            for ($i = 0; $i < count($datadm); $i++) {
-                $option_category .= '<option value="' . $datadm[$i][0] . '">' . $datadm[$i][1] . '</option>';
-            }
-            //-----------------Get data input-----------------------------------------------------
             $category = addslashes($_POST['dk-category']);
             $category_english = addslashes($_POST['dk-category-english']);
             $hinhanh = $_FILES['dk-image']['name'];
             $level = $_POST['dk-level'];
-            //-----------------Event click Add-----------------------------------------------------
             if (isset($_POST['btn-plus'])) {
                 if (!$category || !$hinhanh) {
                     $class_alert = "alert alert-danger";
@@ -105,57 +97,59 @@ if (isset($_GET['level'])) {
                     }
                 }
             }
-            //----------------------Form for input information--------------------------------------
-            echo '
-                    <div class="panel panel-primary filterable">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">CATEGORY</h3>
-                        </div>
-                        <div>
-                            <form role="form" method="POST" class="form-horizontal" enctype="multipart/form-data">
-                                <div class="tab-pane info-register fade in active">
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-2" for="dk-category">Category :</label>
-                                        <div class="col-sm-4">
-                                            <input type="text" class="form-control required" name="dk-category" placeholder="Vietnamese">
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <input type="text" class="form-control" name="dk-category-english" placeholder="English">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-2" for="dk-image">Poster :</label>
-                                        <div class="col-sm-8">
-                                            <input type="file" name="dk-image" id="dk-image" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-2" for="dk-level">Level :</label>
-                                        <div class="col-sm-8">
-                                            <select class="item-cbb" name="dk-level">
-                                                <option value="0">-- Danh mục gốc --</option>' . $option_category . '
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-2" for="dk-save"></label>
-                                        <div class="col-sm-8">
-                                            <button type="submit" name="btn-plus" class="btn btn-primary">Save</button>
-                                        </div>
-                                    </div>
+            ?>
+            <!--Form add-->          
+            <div class="panel panel-primary filterable">
+                <div class="panel-heading">
+                    <h3 class="panel-title">CATEGORY</h3>
+                </div>
+                <div>
+                    <form role="form" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                        <div class="tab-pane info-register fade in active">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="dk-category">Category:</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control required" name="dk-category" placeholder="Vietnamese">
                                 </div>
-                            </form>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" name="dk-category-english" placeholder="English">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="dk-image">Poster:</label>
+                                <div class="col-sm-8">
+                                    <input type="file" name="dk-image" id="dk-image"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="dk-level">Level:</label>
+                                <div class="col-sm-8">
+                                    <?php $arr_option_category = selectData("category", "level = 0", "id_category, category") ?>
+                                    <select class="item-cbb" name="dk-level">
+                                        <option value="0">-- Danh mục gốc --</option>
+                                        <?php foreach ($arr_option_category as $option) : var_dump($option); ?>
+                                            <option value="<?php echo $option['id_category'] ?>">-- <?php echo $option['category'] ?> --</option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="dk-save"></label>
+                                <div class="col-sm-8">
+                                    <button type="submit" name="btn-plus" class="btn btn-primary">Save</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <hr class="hr-no-margin">
-                ';
+                    </form>
+                </div>
+            </div>
+            <hr class="hr-no-margin">
+            <!--/Form add-->
+            <?php
         } elseif ($act == 'edit') {
-            //-------------------Get data from row have selected--------------------------------------------------------
             if ($id_category) {
                 $row = selectData("category", "id_category = '" . $id_category . "'", "*");
             }
-            //-----------------------Get data from database that match with row have selected------------------------------------
-            //------------------------Level-------------------------------------------
             $datadm = selectData("category", "level = 0", "*");
             for ($i = 0; $i < count($datadm); $i++) {
                 if ($row[0][5] == $datadm[$i][0]) {
@@ -163,18 +157,15 @@ if (isset($_GET['level'])) {
                 }
                 $option_category .= '<option ' . $r[$i] . ' value="' . $datadm[$i][0] . '">' . $datadm[$i][1] . '</option>';
             }
-            //------------------------Display-------------------------------------------
             if ($row[0][4] == 1) {
                 $display .= '<input type="checkbox" name="dk-display" checked data-toggle="toggle">';
             } else {
                 $display .= '<input type="checkbox" name="dk-display" data-toggle="toggle">';
             }
-            //-----------------Get data input-----------------------------------------------------
             $category = addslashes($_POST['dk-category']);
             $category_english = addslashes($_POST['dk-category-english']);
             $is_display = $row[0][4];
             $level = $_POST['dk-level'];
-            //-----------------Event click Edit-----------------------------------------------------
             if (isset($_POST['btn-update'])) {
                 if ($id_category) {
                     if (!$category) {
@@ -209,7 +200,6 @@ if (isset($_GET['level'])) {
                                     $tmp_name = $_FILES['dk-image']['tmp_name'];
                                     $name = basename(md5($_FILES['dk-image']['name'] . time()) . "." . $type);
                                     $hinhanh = $path . $name;
-                                    // Move file ---------------------------------------------------------------------------
                                     move_uploaded_file($tmp_name, $hinhanh);
                                 }
                             } else {
@@ -254,50 +244,52 @@ if (isset($_GET['level'])) {
                     }
                 }
             }
-            //----------------------Form for input information--------------------------------------
-            echo '
-                    <div class="panel panel-primary filterable">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">CATEGORY</h3>
-                        </div>
-                        <div>
-                            <form role="form" method="POST" class="form-horizontal" enctype="multipart/form-data">
-                                <div class="tab-pane info-register fade in active">
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-2" for="dk-category">Category:</label>
-                                        <div class="col-sm-4">
-                                            <input type="text" class="form-control required" name="dk-category" id="dk-category" value="' . $row[0][1] . '">
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <input type="text" class="form-control" name="dk-category-english" value="' . $row[0][2] . '">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-2" for="dk-image">Poster:</label>
-                                        <div class="col-sm-8">
-                                            <input type="file" name="dk-image" id="dk-image" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-2" for="dk-birthday">Level:</label>
-                                        <div class="col-sm-8">
-                                            <select class="item-cbb" name="dk-level">
-                                                <option value="0">-- Danh mục gốc --</option>' . $option_category . '
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-2" for="dk-save"></label>
-                                        <div class="col-sm-8">
-                                            <button type="submit" name="btn-update" class="btn btn-primary">Save</button>
-                                        </div>
-                                    </div>
+            ?>
+            <!--Form edit-->
+            <div class="panel panel-primary filterable">
+                <div class="panel-heading">
+                    <h3 class="panel-title">CATEGORY</h3>
+                </div>
+                <div>
+                    <form role="form" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                        <div class="tab-pane info-register fade in active">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="dk-category">Category:</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control required" name="dk-category" id="dk-category" value="<?php echo $row[0][1] ?>">
                                 </div>
-                            </form>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" name="dk-category-english" value="<?php echo $row[0][2] ?>">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="dk-image">Poster:</label>
+                                <div class="col-sm-8">
+                                    <input type="file" name="dk-image" id="dk-image" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="dk-birthday">Level:</label>
+                                <div class="col-sm-8">
+                                    <select class="item-cbb" name="dk-level">
+                                        <option value="0">-- Danh mục gốc --</option>
+                                        <?php echo $option_category ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="dk-save"></label>
+                                <div class="col-sm-8">
+                                    <button type="submit" name="btn-update" class="btn btn-primary">Save</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <hr class="hr-no-margin">
-                ';
+                    </form>
+                </div>
+            </div>
+            <hr class="hr-no-margin">
+            <!--/Form edit-->
+            <?php
         } elseif ($act == 'del') {
             if ($id_category > 0) {
                 modalConfirm("category", "id_category = '" . $id_category . "'", "?page=category");
@@ -329,8 +321,6 @@ if (isset($_GET['level'])) {
                         <tbody>
                             <?php
                             $data = selectData("category", "level = 0", "*");
-                            var_dump($data);
-                            die;
                             for ($i = 0; $i < count($data); $i++) {
                                 ?>
                                 <tr>
@@ -455,11 +445,11 @@ if (isset($_GET['level'])) {
                                             <table class="table table-striped">
                                                 <thead>
                                                     <tr>
-                                                        <th>ID</th>
-                                                        <th>Category</th>
-                                                        <th>Display</th>
-                                                        <th>Level</th>
-                                                        <th></th>
+                                                        <th style="width: 5%">ID</th>
+                                                        <th style="width: 60%">Category</th>
+                                                        <th style="width: 15%">Display</th>
+                                                        <th style="width: 10%">Level</th>
+                                                        <th style="width: 10%"></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -533,4 +523,3 @@ if (isset($_GET['level'])) {
         ?>
     </div>
 </div>
-<!-- /.row -->
