@@ -1,3 +1,69 @@
+<ul class="breadcrumb" id="category-breadcrumb">
+    <li><a href="/home"><?php echo $var_home; ?></a></li>
+    <li class="active"><?php echo $var_store; ?></li>
+</ul>
+<!--PAGE STORE-->
+<div id="container" class="toggled">
+    <div class="row">
+        <div class="col-md-12">
+            <!--Side bar-->
+            <div class="col-md-3">
+                <ul class="sidebar-nav">
+                    <li><a><h3> <?php echo $var_store; ?></h3></a></li>
+                    <?php for ($i = 0; $i < count($arr_store); $i++) : ?>
+                        <li class="text-menu"><a class="<?php echo $store == $arr_store[$i]['id_store'] ? 'text-menu-active' : ''; ?>" href="/store-<?php echo $arr_store[$i]['id_store']; ?>"><?php echo $arr_store[$i]['store']; ?> </a></li>
+                    <?php endfor; ?>
+                </ul>
+            </div>
+            <!--/Side bar-->
+            <!--Content-->
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-12">
+                        <?php if ($store == $arr_store[0]['id_store'] || $store == NULL) : ?>
+                            <div class="col-md-6">
+                                <div class="col-md-12 foundation">
+                                    <h3><?php echo $arr_store[0]['store']; ?></h3>
+                                    <div class="col-md-12 foundation_sm">
+                                        <ul>
+                                            <li><i class="fa fa-address-book-o" aria-hidden="true"></i>Address : <?php echo $_SESSION['lang'] == 'english' ? ($arr_store[0]['address_english'] ? $arr_store[0]['address_english'] : $arr_store[0]['address']) : $arr_store[0]['address']; ?></li>
+                                            <li><i class="fa fa-flag" aria-hidden="true"></i>Time : <?php echo $arr_store[0]['time']; ?></li>
+                                            <li><i class="fa fa-phone" aria-hidden="true"></i>Phone : <?php echo $arr_store[0]['phone']; ?> </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <img class="image-store" src="/admin/<?php echo $arr_store[0]['image']; ?>">
+                            </div>
+                        <?php endif; ?>
+                        <?php for ($i = 1; $i < count($arr_store); $i++) : ?>
+                            <?php if ($store == $arr_store[$i]['id_store']) : ?>
+                                <div class="col-md-6">
+                                    <div class="col-md-12 foundation">
+                                        <h3><?php echo $arr_store[$i]['store']; ?></h3>
+                                        <div class="col-md-12 foundation_sm">
+                                            <ul>
+                                                <li><i class="fa fa-address-book-o" aria-hidden="true"></i>Address : <?php echo $_SESSION['lang'] == 'english' ? ($arr_store[$i]['address_english'] ? $arr_store[$i]['address_english'] : $arr_store[$i]['address']) : $arr_store[$i]['address']; ?></li>
+                                                <li><i class="fa fa-flag" aria-hidden="true"></i>Time : <?php echo $arr_store[$i]['time']; ?></li>
+                                                <li><i class="fa fa-phone" aria-hidden="true"></i>Phone : <?php echo $arr_store[$i]['phone']; ?> </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <img class="image-store" src="/admin/<?php echo $arr_store[$i]['image']; ?>">
+                                </div>
+                            <?php endif; ?>
+                        <?php endfor; ?>
+                    </div>
+                </div>
+            </div>
+            <!--/Content-->
+        </div>        
+    </div> 
+</div>
+<!--/PAGE STORE-->
 <style>
     a:hover, a:focus {
         text-decoration: none !important;
@@ -104,73 +170,3 @@
         }
     }
 </style>
-<ul class="breadcrumb" id="category-breadcrumb">
-    <li><a href="/home"><?php echo $var_home; ?></a></li>
-    <li class="active"><?php echo $var_store; ?></li>
-</ul>
-<!--HELP-->
-<div id="container" class="toggled">
-    <!-- Sidebar -->
-    <div class="row">
-        <div class="col-md-12">
-            <div class="col-md-3">
-                <ul class="sidebar-nav">
-                    <li><a><h3> <?php echo $var_store; ?></h3></a></li>
-                    <li class="text-menu"><a class="<?php echo $store == $arr_store[0]['id_store'] || $about == NULL ? 'text-menu-active' : ''; ?>" href="/store-<?php echo $arr_store[0]['id_store']; ?>"><?php echo $arr_store[0]['store']; ?></a></li>
-                    <?php for ($i = 1; $i < count($arr_store); $i++) : ?>
-                        <li class="text-menu"><a class="<?php echo $store == $arr_store[$i]['id_store'] ? 'text-menu-active' : ''; ?>" href="/store-<?php echo $arr_store[$i]['id_store']; ?>"><?php echo $arr_store[$i]['store']; ?> </a></li>
-                    <?php endfor; ?>
-                </ul>
-            </div>
-            <div class="col-md-9">
-                <div class="row">
-                    <div class="col-md-12">
-                        <?php if ($store == $arr_store[0]['id_store'] || $store == NULL) : ?>
-                            <div class="col-md-6">
-                                <div class="col-md-12 foundation">
-                                    <h3><?php echo $arr_store[0]['store']; ?></h3>
-                                    <div class="col-md-12 foundation_sm">
-                                        <ul>
-                                            <li><i class="fa fa-address-book-o" aria-hidden="true"></i>Address : <?php echo $_SESSION['lang'] == 'english' ? ($arr_store[0]['address_english'] ? $arr_store[0]['address_english'] : $arr_store[0]['address']) : $arr_store[0]['address']; ?></li>
-                                            <li><i class="fa fa-flag" aria-hidden="true"></i>Time : <?php echo $arr_store[0]['time']; ?></li>
-                                            <li><i class="fa fa-phone" aria-hidden="true"></i>Phone : <?php echo $arr_store[0]['phone']; ?> </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <img class="image-store" src="/admin/<?php echo $arr_store[0]['image']; ?>">
-                            </div>
-                        <?php endif; ?>
-                        <?php
-                        for ($i = 1; $i < count($arr_store); $i++) {
-                            if ($store == $arr_store[$i]['id_store']) {
-                                ?>
-                                <div class="col-md-6">
-                                    <div class="col-md-12 foundation">
-                                        <h3><?php echo $arr_store[$i]['store']; ?></h3>
-                                        <div class="col-md-12 foundation_sm">
-                                            <ul>
-                                                <li><i class="fa fa-address-book-o" aria-hidden="true"></i>Address : <?php echo $_SESSION['lang'] == 'english' ? ($arr_store[$i]['address_english'] ? $arr_store[$i]['address_english'] : $arr_store[$i]['address']) : $arr_store[$i]['address']; ?></li>
-                                                <li><i class="fa fa-flag" aria-hidden="true"></i>Time : <?php echo $arr_store[$i]['time']; ?></li>
-                                                <li><i class="fa fa-phone" aria-hidden="true"></i>Phone : <?php echo $arr_store[$i]['phone']; ?> </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <img class="image-store" src="/admin/<?php echo $arr_store[$i]['image']; ?>">
-                                </div>
-                                <?php
-                            }
-                        }
-                        ?>
-                        <!--/Store-->
-                    </div>
-                </div>
-            </div>
-        </div>        
-    </div> 
-</div>
-<!--/address-->
-

@@ -2,21 +2,26 @@
 
 include_once("variable.php");
 include_once("common.php");
-//----------------------------------PHÂN TRANG------
-$pp = 30; // Số sản phẩm hiển thị trên 1 trang
-//----------------Get number page surrent-----------------//	
+$pp = 30;
 $trang = intval($_GET['trang']);
 if (!$trang) {
-    $trang = 1; //Lấy gía trị trang hiện tại
+    $trang = 1;
 }
-//----------------Get page surrent-----------------//
-//---------------------Xử lý hiển thị theo page-------------//
 if ($page == 'product') {
-    //----------------------------------------------
+    $arr_product = selectData('product JOIN detail ON product.id_product=detail.id_product', 'product.id_product=' . $product);
+    $campaign_product = selectData("campaign", "id_product='" . $product . "' AND is_campaign = 1");
+    $arr_image_product = selectData('image', 'id_product=' . $product);
+    $arr_category_2 = selectData('category', 'id_category=' . $arr_product[0]['id_category'], 'id_category, category, level');
+    $arr_category_1 = selectData('category', 'id_category=' . $arr_category_2[0]['level'], 'id_category, category');
+    $arr_product_recommend = selectData("product JOIN detail ON product.id_product=detail.id_product", "product.id_category='" . $arr_product[0]['id_category'] . "' AND product.id_product != '" . $product . "' ORDER BY product.date_up DESC LIMIT 0,9");
+    $arr_product_category = selectData("product JOIN detail ON product.id_product=detail.id_product", "product.id_category In (SELECT id_category FROM category WHERE level = '" . $arr_category_2[0]['level'] . "') AND product.id_product != '" . $product . "' ORDER BY product.date_up DESC LIMIT 0,12");
+    $arr_product = !empty($arr_product) ? $arr_product : array();
+    $arr_image_product = !empty($arr_image_product) ? $arr_image_product : array();
+    $arr_product_recommend = !empty($arr_product_recommend) ? $arr_product_recommend : array();
+    $data_size = selectData("size", "type_size = '" . $arr_product[0]['type_size'] . "'");
     $size = $_POST['dk-size'];
     $color = $_POST['dk-color'];
     $count = $_POST['dk-quality'];
-    //----------------------Xử lý nút thêm vào giỏ hàng-----------------------------
     if (isset($_POST['add-to-cart'])) {
         $info = $size . ',' . $color . ',' . $count;
         if ($color) {
@@ -29,7 +34,6 @@ if ($page == 'product') {
             $err_content = $_SESSION['lang'] == 'english' ? 'Please selected the product color !' : 'Vui lòng chọn màu sản phẩm !';
         }
     }
-    //-------------------SEO---------------------------
     $row_product = selectData("product", "id_product = '" . $product . "'", "id_product, product");
     $web_title = $row_product[0][1] . " Collection's";
     $web_keyword = '';
@@ -140,7 +144,7 @@ if ($page == 'product') {
         $web_desc = '';
     }
 } elseif ($page == 'store') {
-    $arr_store = selectData('store', '', '*');
+    $arr_store = selectData('store');
     $title = selectData("title", "page = 'store'", "*");
     if ($title) {
         $web_title = $_SESSION['lang'] == 'english' ? ($title[0][2] ? $title[0][2] : $title[0][1]) : $title[0][1];

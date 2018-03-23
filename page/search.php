@@ -3,19 +3,19 @@ $category_1 = selectData('category', 'level = 0 AND is_display=1');
 $data_size_1 = selectData("size", "1=1", "DISTINCT type_size");
 $data = selectData("object", "1=1", "*");
 //-----------------------PHÂN TRANG---------------------------------------//
-$data_total = selectData("product", "product LIKE '%".$key."%'","*");
+$data_total = selectData("product", "product LIKE '%" . $key . "%'", "*");
 $total = count($data_total);
-$numofpages = $total/$pp;
-if ($trang <= 0) { 
-    $page = 1; 
-} else { 
-    if ($trang <= ceil($numofpages)) 
-        $page = $trang; 
-    else 
-        $page = 1; 
-} 
-$limitvalue = ($page * $pp) - $pp; 
-$self = "/search-".$key."/";
+$numofpages = $total / $pp;
+if ($trang <= 0) {
+    $page = 1;
+} else {
+    if ($trang <= ceil($numofpages))
+        $page = $trang;
+    else
+        $page = 1;
+}
+$limitvalue = ($page * $pp) - $pp;
+$self = "/search-" . $key . "/";
 //-----------------------PHÂN TRANG---------------------------------------//
 ?>
 <ul class="breadcrumb" id="category-breadcrumb">
@@ -34,7 +34,7 @@ $self = "/search-".$key."/";
                         <ul class="nav">
                             <?php
                             for ($i = 0; $i < count($category_1); $i++) {
-                                $category_2 = selectData("category", "level = '".$category_1[$i]['id_category']."' AND is_display=1");
+                                $category_2 = selectData("category", "level = '" . $category_1[$i]['id_category'] . "' AND is_display=1");
                                 ?>
                                 <li>
                                     <h4><a class="search-header" href="/category/<?php echo bodau($category_1[$i][1]); ?>-<?php echo $category_1[$i]['id_category']; ?>"><?php echo $_SESSION['lang'] == 'english' ? ($category_1[$i][2] ? $category_1[$i][2] : $category_1[$i][1]) : $category_1[$i][1]; ?></a></h4>
@@ -119,19 +119,19 @@ $self = "/search-".$key."/";
                 </div>
             </div>
             <!--Filter-->
-            <?php $arr_product = selectData("product", "product LIKE '%".$key."%' ORDER BY date_up DESC LIMIT $limitvalue,$pp","*"); ?>
+            <?php $arr_product = selectData("product", "product LIKE '%" . $key . "%' ORDER BY date_up DESC LIMIT $limitvalue,$pp", "*"); ?>
             <?php $arr_product = !empty($arr_product) ? $arr_product : array(); ?>
             <!--Product category-->
             <div class="row">
                 <?php $i = 1; ?>
                 <?php foreach ($arr_product as $item_pro) : ?>
                     <?php $detail_pro = selectData('detail', 'id_product=' . $item_pro['id_product']); ?>
-                    <?php $campaign_pro = selectData("campaign", "id_product='".$item_pro['id_product']."' AND is_campaign = 1"); ?>
+                    <?php $campaign_pro = selectData("campaign", "id_product='" . $item_pro['id_product'] . "' AND is_campaign = 1"); ?>
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail thumbnail-product">
                             <img src="/admin/<?php echo $detail_pro[0]['image']; ?>" alt="">
                             <div class="col-sm-12 caption caption-product">
-                                <h4><a title="<?php echo $item_pro['product']; ?>" href="<?php echo xllink("product", $item_pro['product'], $item_pro['id_product'])?>"><?php echo $item_pro['product']; ?></a>
+                                <h4><a title="<?php echo $item_pro['product']; ?>" href="<?php echo xllink("product", $item_pro['product'], $item_pro['id_product']) ?>"><?php echo $item_pro['product']; ?></a>
                                 </h4>
                             </div>
                             <div class="clear"></div>
@@ -160,14 +160,14 @@ $self = "/search-".$key."/";
                             </div>
                             <div class="product-swatches">
                                 <ul class="swatch-list swatch-toggle">
-                                <?php
+                                    <?php
                                     $color = explode(",", $detail_pro[0]['color']);
                                     for ($j = 0; $j < count($color); $j++) {
                                         ?>
                                         <li><div style="background: <?php echo $color[$j]; ?>" class="col-sm-3 col-lg-3 col-md-3 color-product"></div></li>
-                                        <?php
-                                    }
-                                ?>
+                                            <?php
+                                        }
+                                        ?>
                                 </ul>
                             </div>
                         </div>
@@ -176,11 +176,7 @@ $self = "/search-".$key."/";
                 <?php endforeach; ?>
             </div>
             <!--/Product category-->
-            <div class="pagenition">
-                <?php
-                    echo setPage($self,$total,$pp,$page);
-                ?>
-            </div>
+            <?php echo setPage($self, $total, $pp, $page); ?>
         </div>
         <!--/Content-->
     </div>

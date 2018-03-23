@@ -307,7 +307,6 @@ function xllink($a, $title, $id) {
  * @return html 
  */
 function setPage($self, $page_total, $page_limit, $page_num) {
-    DIE;
     $numofpages = ceil($page_total / $page_limit);
     if ($numofpages > '1') {
         $range = 4;

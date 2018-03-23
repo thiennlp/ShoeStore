@@ -1,4 +1,8 @@
 <?php
+$var_detail = 'CHI TIẾT';
+$var_price = 'GIÁ';
+$var_category = 'DANH MỤC';
+$var_image_product = 'HÌNH ẢNH SẢN PHẨM';
 $var_category_list = 'PHÂN LOẠI THEO DANH MỤC';
 $var_welcome = "Chào mừng đến với ZAC & JEAN Collection's";
 $var_register = 'ĐĂNG KÝ';

@@ -1,3 +1,55 @@
+<ul class="breadcrumb" id="category-breadcrumb">
+    <li><a href="/home"><?php echo $var_home; ?></a></li>
+    <li class="active"><?php echo $var_help; ?></li>
+</ul>
+<!--PAGE HELP-->
+<div id="container">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Sidebar -->
+            <div class="col-md-3">
+                <ul class="sidebar-nav">
+                    <li><a><h3> <?php echo $var_help; ?></h3></a></li>
+                    <li class="text-menu"><a class="<?php echo $help == $arr_help[0]['id_help'] || $help == NULL ? 'text-menu-active' : ''; ?>" href="/help-<?php echo $arr_help[0]['id_help']; ?>"><?php echo $_SESSION['lang'] == 'english' ? ($arr_help[0]['help_english'] ? $arr_help[0]['help_english'] : $arr_help[0]['help']) : $arr_help[0]['help']; ?></a></li>
+                    <?php for ($i = 1; $i < count($arr_help); $i++) : ?>
+                        <li class="text-menu"><a class="<?php echo $help == $arr_help[$i]['id_help'] ? 'text-menu-active' : ''; ?>" href="/help-<?php echo $arr_help[$i]['id_help']; ?>"><?php echo $_SESSION['lang'] == 'english' ? ($arr_help[$i]['help_english'] ? $arr_help[$i]['help_english'] : $arr_help[$i]['help']) : $arr_help[$i]['help']; ?> </a></li>
+                    <?php endfor; ?>
+                </ul>
+            </div>
+            <!-- /Sidebar -->
+            <!--Content-->
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <?php if ($help == $arr_help[0]['id_help'] || $help == NULL) : ?>
+                                <div class="card-header" data-background-color="orange">
+                                    <h3 class="title"><i class="glyphicon glyphicon-question-sign"></i> <?php echo $_SESSION['lang'] == 'english' ? ($arr_help[0]['help_english'] ? $arr_help[0]['help_english'] : $arr_help[0]['help']) : $arr_help[0]['help']; ?></h3>
+                                </div>
+                                <div class="card-content table-responsive">
+                                    <p><?php echo $_SESSION['lang'] == 'english' ? ($arr_help[0]['content_english'] ? $arr_help[0]['content_english'] : $arr_help[0]['content']) : $arr_help[0]['content']; ?></p>
+                                </div>
+                            <?php endif; ?>
+                            <?php for ($i = 1; $i < count($arr_help); $i++) : ?>
+                                <?php if ($help == $arr_help[$i]['id_help']) : ?>
+                                    ?>
+                                    <div class="card-header" data-background-color="orange">
+                                        <h3 class="title"><i class="glyphicon glyphicon-question-sign"></i> <?php echo $_SESSION['lang'] == 'english' ? ($arr_help[$i]['help_english'] ? $arr_help[$i]['help_english'] : $arr_help[$i]['help']) : $arr_help[$i]['help']; ?></h3>
+                                    </div>
+                                    <div class="card-content table-responsive">
+                                        <p><?php echo $_SESSION['lang'] == 'english' ? ($arr_help[$i]['content_english'] ? $arr_help[$i]['content_english'] : $arr_help[$i]['content']) : $arr_help[$i]['content']; ?></p>
+                                    </div>
+                                <?php endif; ?>
+                            <?php endfor; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/Content-->
+        </div>        
+    </div>
+</div>
+<!--/PAGE HELP-->
 <style>
     a:hover, a:focus {
         text-decoration: none !important;
@@ -141,55 +193,3 @@
         width: 25%;
     }
 </style>
-<ul class="breadcrumb" id="category-breadcrumb">
-    <li><a href="/home"><?php echo $var_home; ?></a></li>
-    <li class="active"><?php echo $var_help; ?></li>
-</ul>
-<!--HELP-->
-<div id="container">
-    <!-- Sidebar -->
-    <!-- Sidebar -->
-    <div class="row">
-        <div class="col-md-12">
-            <div class="col-md-3">
-                <ul class="sidebar-nav">
-                    <li><a><h3> <?php echo $var_help; ?></h3></a></li>
-                    <li class="text-menu"><a class="<?php echo $help == $arr_help[0]['id_help'] || $help == NULL ? 'text-menu-active' : ''; ?>" href="/help-<?php echo $arr_help[0]['id_help']; ?>"><?php echo $_SESSION['lang'] == 'english' ? ($arr_help[0]['help_english'] ? $arr_help[0]['help_english'] : $arr_help[0]['help']) : $arr_help[0]['help']; ?></a></li>
-                    <?php for ($i = 1; $i < count($arr_help); $i++) : ?>
-                        <li class="text-menu"><a class="<?php echo $help == $arr_help[$i]['id_help'] ? 'text-menu-active' : ''; ?>" href="/help-<?php echo $arr_help[$i]['id_help']; ?>"><?php echo $_SESSION['lang'] == 'english' ? ($arr_help[$i]['help_english'] ? $arr_help[$i]['help_english'] : $arr_help[$i]['help']) : $arr_help[$i]['help']; ?> </a></li>
-                    <?php endfor; ?>
-                </ul>
-            </div>
-            <div class="col-md-9">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <?php if ($help == $arr_help[0]['id_help'] || $help == NULL) : ?>
-                                <div class="card-header" data-background-color="orange">
-                                    <h3 class="title"><i class="glyphicon glyphicon-question-sign"></i> <?php echo $_SESSION['lang'] == 'english' ? ($arr_help[0]['help_english'] ? $arr_help[0]['help_english'] : $arr_help[0]['help']) : $arr_help[0]['help']; ?></h3>
-                                </div>
-                                <div class="card-content table-responsive">
-                                    <p><?php echo $_SESSION['lang'] == 'english' ? ($arr_help[0]['content_english'] ? $arr_help[0]['content_english'] : $arr_help[0]['content']) : $arr_help[0]['content']; ?></p>
-                                </div>
-                            <?php endif; ?>
-                            <?php
-                            for ($i = 1; $i < count($arr_help); $i++) {
-                                if ($help == $arr_help[$i]['id_help']) {
-                                    ?>
-                                    <div class="card-header" data-background-color="orange">
-                                        <h3 class="title"><i class="glyphicon glyphicon-question-sign"></i> <?php echo $_SESSION['lang'] == 'english' ? ($arr_help[$i]['help_english'] ? $arr_help[$i]['help_english'] : $arr_help[$i]['help']) : $arr_help[$i]['help']; ?></h3>
-                                    </div>
-                                    <div class="card-content table-responsive">
-                                        <p><?php echo $_SESSION['lang'] == 'english' ? ($arr_help[$i]['content_english'] ? $arr_help[$i]['content_english'] : $arr_help[$i]['content']) : $arr_help[$i]['content']; ?></p>
-                                    </div>
-                                    <?php
-                                }
-                            }
-                            ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>        
-    </div> 
-</div>

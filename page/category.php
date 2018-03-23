@@ -8,28 +8,6 @@ if (is_numeric($category)) {
 $data_size_1 = selectData("size", "1=1", "DISTINCT type_size");
 $data = selectData("object", "1=1", "*");
 $image_default = 'http://placehold.it/800x300';
-
-if (!isset($catid)) {
-    
-} else {
-    if (is_numeric($catid)) {
-        
-    } elseif ($catid == 'new') {
-        
-    } elseif ($catid == 'sales') {
-        
-    } elseif ($catid == 'best') {
-        
-    }
-}
-
-$price = $_POST['option-price'];
-$size = $_POST['option-size'];
-$object = $_POST['option-object'];
-$color = $_POST['option-color'];
-if (isset($_POST['btn-filter'])) {
-    
-}
 ?>
 <ul class="breadcrumb" id="category-breadcrumb">
     <li><a href="/home"><?php echo $var_home; ?></a></li>
@@ -175,19 +153,17 @@ if (isset($_POST['btn-filter'])) {
                 <?php $arr_category = selectData("category", "level = '" . $category . "'"); ?>
                 <?php $arr_category = !empty($arr_category) ? $arr_category : array(); ?>
                 <?php foreach ($arr_category as $item_cat) : ?>
-                    <!--Slide-->
+                    <!--Banner category-->
                     <div class="row carousel-holder">
                         <div class="col-md-12">
-                            <!--Slide image category-->
                             <div class="category-panel">
                                 <a href="/category/<?php echo bodau($category_1[0]['category']); ?>-<?php echo $category; ?>/<?php echo $item_cat['category']; ?>-<?php echo $item_cat['id_category']; ?>/1" title="<?php echo $category_1[0]['category']; ?>">
                                     <img class="slide-image" src="<?php echo '/admin/' . $item_cat['image']; ?>" alt="">
                                 </a>
                             </div>
-                            <!--Slide image category-->
                         </div>
                     </div>
-                    <!--/Slide-->
+                    <!--/Banner category-->
                     <?php $arr_product = selectData("product", "id_category = '" . $item_cat['id_category'] . "' ORDER BY date_up DESC LIMIT 0,9", "*"); ?>
                     <?php $arr_product = !empty($arr_product) ? $arr_product : array(); ?>
                     <!--Product category-->
@@ -210,15 +186,18 @@ if (isset($_POST['btn-filter'])) {
                                             if ($campaign_pro) {
                                                 ?>
                                                 <span class="new-sales Low Stock rBadge1"><?php echo $var_sales; ?></span>
+                                                </br>
                                                 <?php
                                             } else {
                                                 ?>
                                                 <span class="new Low Stock rBadge1"><?php echo $var_new; ?></span>
+                                                </br>
                                                 <?php
                                             }
                                             if ($item_pro['total'] < 10) {
                                                 ?>
                                                 <span class="new-low Low Stock rBadge1"><?php echo $var_low; ?></span>
+                                                </br>
                                                 <?php
                                             }
                                             ?>
@@ -286,15 +265,18 @@ if (isset($_POST['btn-filter'])) {
                                             if ($campaign_pro) {
                                                 ?>
                                                 <span class="new-sales Low Stock rBadge1"><?php echo $var_sales; ?></span>
+                                                </br>
                                                 <?php
                                             } else {
                                                 ?>
                                                 <span class="new Low Stock rBadge1"><?php echo $var_new; ?></span>
+                                                </br>
                                                 <?php
                                             }
                                             if ($item_pro['total'] < 10) {
                                                 ?>
                                                 <span class="new-low Low Stock rBadge1"><?php echo $var_low; ?></span>
+                                                </br>
                                                 <?php
                                             }
                                             ?>
@@ -365,15 +347,18 @@ if (isset($_POST['btn-filter'])) {
                                                 if ($campaign_pro) {
                                                     ?>
                                                     <span class="new-sales Low Stock rBadge1"><?php echo $var_sales; ?></span>
+                                                    </br>
                                                     <?php
                                                 } else {
                                                     ?>
                                                     <span class="new Low Stock rBadge1"><?php echo $var_new; ?></span>
+                                                    </br>
                                                     <?php
                                                 }
                                                 if ($item_pro['total'] < 10) {
                                                     ?>
                                                     <span class="new-low Low Stock rBadge1"><?php echo $var_low; ?></span>
+                                                    </br>
                                                     <?php
                                                 }
                                                 ?>
@@ -443,15 +428,18 @@ if (isset($_POST['btn-filter'])) {
                                                 if ($campaign_pro) {
                                                     ?>
                                                     <span class="new-sales Low Stock rBadge1"><?php echo $var_sales; ?></span>
+                                                    </br>
                                                     <?php
                                                 } else {
                                                     ?>
                                                     <span class="new Low Stock rBadge1"><?php echo $var_new; ?></span>
+                                                    </br>
                                                     <?php
                                                 }
                                                 if ($item_pro['total'] < 10) {
                                                     ?>
                                                     <span class="new-low Low Stock rBadge1"><?php echo $var_low; ?></span>
+                                                    </br>
                                                     <?php
                                                 }
                                                 ?>
@@ -521,15 +509,18 @@ if (isset($_POST['btn-filter'])) {
                                                 if ($campaign_pro) {
                                                     ?>
                                                     <span class="new-sales Low Stock rBadge1"><?php echo $var_sales; ?></span>
+                                                    </br>
                                                     <?php
                                                 } else {
                                                     ?>
                                                     <span class="new Low Stock rBadge1"><?php echo $var_new; ?></span>
+                                                    </br>
                                                     <?php
                                                 }
                                                 if ($item_pro['total'] < 10) {
                                                     ?>
                                                     <span class="new-low Low Stock rBadge1"><?php echo $var_low; ?></span>
+                                                    </br>
                                                     <?php
                                                 }
                                                 ?>
@@ -545,9 +536,9 @@ if (isset($_POST['btn-filter'])) {
                                                 for ($i = 0; $i < count($color); $i++) {
                                                     ?>
                                                     <li><div style="background: <?php echo $color[$i]; ?>" class="col-sm-4 col-lg-4 col-md-4 color-product"></div></li>
-                                                    <?php
-                                                }
-                                                ?>
+                                                        <?php
+                                                    }
+                                                    ?>
                                             </ul>
                                         </div>
                                     </div>
@@ -560,7 +551,6 @@ if (isset($_POST['btn-filter'])) {
                         <!--/Product-->
                     <?php endif; ?>
                 <?php endif; ?>
-
             <?php endif; ?>
         </div>
         <!--/Content-->

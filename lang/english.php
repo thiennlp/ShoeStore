@@ -1,4 +1,8 @@
 <?php
+$var_detail = 'DETAIL';
+$var_price = 'PRICE';
+$var_category = 'CATEGORY';
+$var_image_product = 'IMAGE PRODUCT';
 $var_category_list = 'SHOP BY CATEGORY';
 $var_welcome = ";Welcome to ZAC & JEAN Collection's";
 $var_register = 'REGISTER';

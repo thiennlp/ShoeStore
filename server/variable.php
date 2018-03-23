@@ -28,7 +28,7 @@
         $about = $_GET['about'];
     }
     if (isset($_GET['store'])) {
-        $about = $_GET['store'];
+        $store = $_GET['store'];
     }
     if (isset($_GET['category'])) {
         $category = $_GET['category'];

@@ -3,10 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/xampp/htdocs/server/api.php</file>
+            <file>file:/C:/xampp/htdocs/admin/page/product.php</file>
+            <file>file:/C:/xampp/htdocs/admin/page/banner.php</file>
             <file>file:/C:/xampp/htdocs/page/home.php</file>
             <file>file:/C:/xampp/htdocs/page/help.php</file>
             <file>file:/C:/xampp/htdocs/admin/page/category.php</file>
             <file>file:/C:/xampp/htdocs/server/common.php</file>
+            <file>file:/C:/xampp/htdocs/admin/page/sql.php</file>
+            <file>file:/C:/xampp/htdocs/admin/page/ajax-update-category.php</file>
+            <file>file:/C:/xampp/htdocs/admin/page/customer.php</file>
+            <file>file:/C:/xampp/htdocs/admin/page/ajax-update-banner.php</file>
+            <file>file:/C:/xampp/htdocs/admin/page/ajax-update-campaign.php</file>
+            <file>file:/C:/xampp/htdocs/admin/page/bill.php</file>
+            <file>file:/C:/xampp/htdocs/admin/page/ajax-update-bill.php</file>
+            <file>file:/C:/xampp/htdocs/admin/page/home.php</file>
+            <file>file:/C:/xampp/htdocs/admin/page/ajax-get-age.php</file>
+            <file>file:/C:/xampp/htdocs/admin/page/store.php</file>
         </group>
     </open-files>
 </project-private>

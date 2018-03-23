@@ -150,7 +150,7 @@ if (isset($_GET['category'])) {
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="dk-image">Image:</label>
                                     <div class="col-sm-8">
-                                        <input type="file" name="dk-image" id="dk-image" />
+                                        <input type="file" name="dk-image" id="dk-image"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
