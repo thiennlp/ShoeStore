@@ -1,22 +1,9 @@
+<?php include("./module/breadcrumb.php"); ?>
 <?php
 $id_customer = intval($_GET['id']);
 $class_alert;
 $content_notice;
 ?>
-<!-- Page Heading -->
-<div class="row">
-    <div class="col-lg-12">
-        <ol class="breadcrumb">
-            <li>
-                <i class="fa fa-dashboard"></i>  <a href="#">Home</a>
-            </li>
-            <li class="active">
-                <i class="fa fa-file"></i> Customer
-            </li>
-        </ol>
-    </div>
-</div>
-<hr class="hr-no-margin">
 <div class="row">
     <div class="col-md-12">
         <?php

@@ -1,21 +1,8 @@
+<?php include("./module/breadcrumb.php"); ?>
 <?php
 $id_size = intval($_GET['id']);
 $id_mode = $_GET['mode'];
 ?>
-<!-- Page Heading -->
-<div class="row">
-    <div class="col-lg-12">
-        <ol class="breadcrumb bc-no-margin">
-            <li>
-                <i class="fa fa-dashboard"></i>  <a href="#">Home</a>
-            </li>
-            <li class="active">
-                <i class="fa fa-fw fa-wrench"></i> Size
-            </li>
-        </ol>
-    </div>
-</div>
-<hr class="hr-no-margin">
 <div class="row">
     <div class="col-md-12">
     <?php

@@ -59,9 +59,6 @@ if (!$trang)
     </head>
 
     <body>
-        <?php
-//        if (isset($_SESSION['user'])) {
-        ?>
         <div id="wrapper">
             <!-- Modal notice from ajax -->
             <div class="modal fade" id="modalAjaxGood" role="dialog">
@@ -105,7 +102,7 @@ if (!$trang)
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand title-home" href="#">Admin - ZAC & JEAN Collection's</a>
+                    <a class="navbar-brand title-home" href="/admin/">Admin - ZAC & JEAN Collection's</a>
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
                     <li class="dropdown">
@@ -171,106 +168,108 @@ if (!$trang)
                         ?>
                     </li>
                 </ul>
-                <div class="navbar-default sidebar" role="navigation">
-                    <div class="sidebar-nav navbar-collapse">
-                        <ul class="nav" id="side-menu">
-                            <li>
-                                <a href="?page=banner"><i class="fa fa-picture-o fa-fw"></i> BANNER</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-dashboard fa-fw"></i> CATEGORY<span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="?page=category&level=0"><span>ALL</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="?page=category&level=1"><span>LEVEL 1</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="?page=category&level=2"><span>LEVEL 2</span></a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> PRODUCT<span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="?page=product&category=0"><span>ALL</span></a>
-                                    </li>
-                                    <?php
-                                    $data = selectData("category", "level = 0", "*");
-                                    for ($i = 0; $i < count($data); $i++) {
-                                        $data_sub = selectData("category", "level = '" . $data[$i][0] . "'", "*");
-                                        ?>
+                <?php if (isset($_SESSION['user'])) : ?>
+                    <div class="navbar-default sidebar" role="navigation">
+                        <div class="sidebar-nav navbar-collapse">
+                            <ul class="nav" id="side-menu">
+                                <li>
+                                    <a href="?page=banner"><i class="fa fa-picture-o fa-fw"></i> BANNER</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-dashboard fa-fw"></i> CATEGORY<span class="fa arrow"></span></a>
+                                    <ul class="nav nav-second-level">
                                         <li>
-                                            <a href="#"><span <?php echo count($data_sub) > 0 ? 'class="fa arrow"' : ''; ?>></span><?php echo $data[$i][1]; ?></a>
-                                            <ul class="nav nav-third-level">
-                                                <?php
-                                                for ($j = 0; $j < count($data_sub); $j++) {
-                                                    ?>
-                                                    <li>
-                                                        <a href="?page=product&category=<?php echo $data_sub[$j][0]; ?>"><?php echo $data_sub[$j][1]; ?></a>
-                                                    </li>
-                                                    <?php
-                                                }
-                                                ?>
-                                            </ul>
+                                            <a href="?page=category&level=0"><span>ALL</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="?page=category&level=1"><span>LEVEL 1</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="?page=category&level=2"><span>LEVEL 2</span></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> PRODUCT<span class="fa arrow"></span></a>
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <a href="?page=product&category=0"><span>ALL</span></a>
                                         </li>
                                         <?php
-                                    }
-                                    ?>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-plus-square fa-fw"></i> BILL<span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="?page=bill&state=0"><span>ALL</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="?page=bill&state=1"><span>NEW</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="?page=bill&state=2"><span>SHIPPING</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="?page=bill&state=3"><span>DONE</span></a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="?page=customer"><i class="fa fa-user fa-fw"></i> CUSTOMER</a>
-                            </li>
-                            <li>
-                                <a href="?page=user"><i class="fa fa-user-secret fa-fw"></i> USER</a>
-                            </li>
-                            <li>
-                                <a href="?page=object"><i class="fa fa-user fa-fw"></i> OBJECT</a>
-                            </li>
-                            <li>
-                                <a href="?page=size"><i class="fa fa-wrench fa-fw"></i> SIZE</a>
-                            </li>
-                            <li>
-                                <a href="?page=store"><i class="fa fa-university fa-fw"></i> STORE</a>
-                            </li>
-                            <li>
-                                <a href="?page=about"><i class="fa fa-question-circle-o fa-fw"></i> ABOUT</a>
-                            </li>
-                            <li>
-                                <a href="?page=help"><i class="fa fa-leanpub fa-fw"></i> HELP</a>
-                            </li>
-                            <li>
-                                <a href="?page=title"><i class="fa fa-audio-description fa-fw"></i> TITLE</a>
-                            </li>
-                        </ul>
+                                        $data = selectData("category", "level = 0", "*");
+                                        for ($i = 0; $i < count($data); $i++) {
+                                            $data_sub = selectData("category", "level = '" . $data[$i][0] . "'", "*");
+                                            ?>
+                                            <li>
+                                                <a href="#"><span <?php echo count($data_sub) > 0 ? 'class="fa arrow"' : ''; ?>></span><?php echo $data[$i][1]; ?></a>
+                                                <ul class="nav nav-third-level">
+                                                    <?php
+                                                    for ($j = 0; $j < count($data_sub); $j++) {
+                                                        ?>
+                                                        <li>
+                                                            <a href="?page=product&category=<?php echo $data_sub[$j][0]; ?>"><?php echo $data_sub[$j][1]; ?></a>
+                                                        </li>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </ul>
+                                            </li>
+                                            <?php
+                                        }
+                                        ?>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-plus-square fa-fw"></i> BILL<span class="fa arrow"></span></a>
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <a href="?page=bill&state=0"><span>ALL</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="?page=bill&state=1"><span>NEW</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="?page=bill&state=2"><span>SHIPPING</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="?page=bill&state=3"><span>DONE</span></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="?page=customer"><i class="fa fa-user fa-fw"></i> CUSTOMER</a>
+                                </li>
+                                <li>
+                                    <a href="?page=user"><i class="fa fa-user-secret fa-fw"></i> USER</a>
+                                </li>
+                                <li>
+                                    <a href="?page=object"><i class="fa fa-user fa-fw"></i> OBJECT</a>
+                                </li>
+                                <li>
+                                    <a href="?page=size"><i class="fa fa-wrench fa-fw"></i> SIZE</a>
+                                </li>
+                                <li>
+                                    <a href="?page=store"><i class="fa fa-university fa-fw"></i> STORE</a>
+                                </li>
+                                <li>
+                                    <a href="?page=about"><i class="fa fa-question-circle-o fa-fw"></i> ABOUT</a>
+                                </li>
+                                <li>
+                                    <a href="?page=help"><i class="fa fa-leanpub fa-fw"></i> HELP</a>
+                                </li>
+                                <li>
+                                    <a href="?page=title"><i class="fa fa-audio-description fa-fw"></i> TITLE</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
+                <?php endif; ?>
             </nav>
 
             <div id="page-wrapper">
                 <?php
                 $array_page = array('category', 'product', 'user', 'customer', 'bill', 'object', 'size', 'banner', 'store', 'about', 'help', 'title', 'sql');
-                if (in_array($page, $array_page)) {
+                if (in_array($page, $array_page) && isset($_SESSION['user'])) {
                     include("page/$page.php");
                 } else {
                     include("page/home.php");

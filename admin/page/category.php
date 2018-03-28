@@ -1,22 +1,10 @@
+<?php include("./module/breadcrumb.php"); ?>
 <?php
 $id_category = intval($_GET['id']);
 if (isset($_GET['level'])) {
     $level = $_GET['level'];
 }
 ?>
-<!-- Page Heading -->
-<div class="row">
-    <div class="col-lg-12">
-        <ol class="breadcrumb bc-no-margin">
-            <li>
-                <i class="fa fa-dashboard"></i>
-                <a href="/admin/">Trang chủ</a>
-            </li>
-            <li class="active"><i class="fa fa-fw fa-wrench"></i>Category</li>
-        </ol>
-    </div>
-</div>
-<hr class="hr-no-margin">
 <div class="row">
     <div class="col-md-12">
         <?php

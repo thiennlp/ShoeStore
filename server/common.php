@@ -394,5 +394,4 @@ function curPageURL() {
     return $pageURL;
 }
 
-?>
 

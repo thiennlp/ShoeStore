@@ -1,24 +1,10 @@
+<?php include("./module/breadcrumb.php"); ?>
 <?php
 $id_product = intval($_GET['id']);
 if (isset($_GET['category'])) {
     $category = $_GET['category'];
 }
 ?>
-<!-- Breadcrumb -->
-<div class="row">
-    <div class="col-lg-12">
-        <ol class="breadcrumb bc-no-margin">
-            <li>
-                <i class="fa fa-dashboard"></i><a href="/admin/">Home</a>
-            </li>
-            <li class="active"><i class="fa fa-fw fa-bar-chart-o"></i>Product</li>
-        </ol>
-    </div>
-</div>
-<!-- /Breadcrumb -->
-
-<hr class="hr-no-margin">
-
 <div class="row">
     <div class="col-md-12">
         <?php

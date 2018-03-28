@@ -1,41 +1,41 @@
 <?php
 if (isset($_POST['btn-login'])) {
-    $username	=	$_POST['username'];
-    $password	=	md5($_POST['password']);
+    $username = $_POST['username'];
+    $password = md5($_POST['password']);
 
     if (!$username || !$password) {
         $class_alert = "alert alert-danger";
         $content_notice = "Please input fill info login !";
         modalInfo($class_alert, $content_notice);
         ?>
-            <script>
-                $('#modalNotice').modal('show');
-                $(document).on('hide.bs.modal','#modalNotice', function () {
-                    history.back();
-                });
-            </script>
+        <script>
+            $('#modalNotice').modal('show');
+            $(document).on('hide.bs.modal', '#modalNotice', function () {
+                history.back();
+            });
+        </script>
         <?php
     } else {
-        $account = selectData("account", "username = '".$username."' AND password = '".$password."'", "*");
+        $account = selectData("account", "username = '" . $username . "' AND password = '" . $password . "'", "*");
         if ($account) {
             $_SESSION['user'] = true;
             $_SESSION['user'] = $account[0][0];
             ?>
-                <script>
-                    parent.location = "?page=banner";
-                </script>
+            <script>
+                parent.location = "?page=banner";
+            </script>
             <?php
         } else {
             $class_alert = "alert alert-danger";
             $content_notice = $mysqli->error;
             modalInfo($class_alert, $content_notice);
             ?>
-                <script>
-                    $('#modalNotice').modal('show');
-                    $(document).on('hide.bs.modal','#modalNotice', function () {
-                        history.back();
-                    });
-                </script>
+            <script>
+                $('#modalNotice').modal('show');
+                $(document).on('hide.bs.modal', '#modalNotice', function () {
+                    history.back();
+                });
+            </script>
             <?php
         }
     }
@@ -73,7 +73,7 @@ if (isset($_POST['btn-login'])) {
                                     <input type="text" class="form-control" name="username" placeholder="Username">
                                 </div>
                                 <span class="help-block"></span>
-                                                    
+
                                 <div class="col-md-12 input-group">
                                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
                                     <input  type="password" class="form-control" name="password" placeholder="Password">

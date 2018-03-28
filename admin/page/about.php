@@ -1,20 +1,5 @@
-<?php
-$id_about = intval($_GET['id']);
-?>
-<!-- Page Heading -->
-<div class="row">
-    <div class="col-lg-12">
-        <ol class="breadcrumb bc-no-margin">
-            <li>
-                <i class="fa fa-dashboard"></i>  <a href="#">Home</a>
-            </li>
-            <li class="active">
-                <i class="fa fa-question-circle-o"></i> About 
-            </li>
-        </ol>
-    </div>
-</div>
-<hr class="hr-no-margin">
+<?php include("./module/breadcrumb.php"); ?>
+<?php $id_about = intval($_GET['id']); ?>
 <div class="row">
     <?php
     if ($act == 'add') {
@@ -305,7 +290,7 @@ $id_about = intval($_GET['id']);
                         <th style="width: 25%">ABOUT (VN)</th>
                         <th style="width: 25%">ABOUT (ENG)</th>
                         <th style="width: 30%">IMAGE</th>
-                        <th style="width: 10%"></th>
+                        <th style="width: 10%">ACTION</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -332,4 +317,3 @@ $id_about = intval($_GET['id']);
     }
     ?>
 </div>
-<!-- /.row -->

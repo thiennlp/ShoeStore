@@ -1,20 +1,7 @@
+<?php include("./module/breadcrumb.php"); ?>
 <?php
 $id_help = intval($_GET['id']);
 ?>
-<!-- Page Heading -->
-<div class="row">
-    <div class="col-lg-12">
-        <ol class="breadcrumb bc-no-margin">
-            <li>
-                <i class="fa fa-dashboard"></i>  <a href="#">Home</a>
-            </li>
-            <li class="active">
-                <i class="fa fa-leanpub"></i> Help 
-            </li>
-        </ol>
-    </div>
-</div>
-<hr class="hr-no-margin">
 <div class="row">
     <div class="col-md-12">
     <?php
