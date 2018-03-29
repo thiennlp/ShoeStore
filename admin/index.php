@@ -1,26 +1,7 @@
 <?php
 include_once("../server/connect.php");
 include_once("../server/common.php");
-if (isset($_GET['act'])) {
-    $act = $_GET['act'];
-}
-if (isset($_GET['page'])) {
-    $page = $_GET['page'];
-}
-if (isset($_GET['category'])) {
-    $category = $_GET['category'];
-}
-if ($page == 'logout') {
-    unset($_SESSION['user']);
-    header("Location: ?page=home");
-}
-// pagination
-$pp_product = 20; // number record of product on page
-$pp_customer = 40; // number record of customer on page
-// Get number page present
-$trang = intval($_GET['trang']);
-if (!$trang)
-    $trang = 1; // page default
+include_once("../server/api-admin.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +12,6 @@ if (!$trang)
         <meta name="description" content="">
         <meta name="author" content="">
         <link href="../assets/image/font-end/icon.png" rel="shortcut icon" />
-
         <title>Welcome to Administrator</title>
 
         <!-- Bootstrap Core CSS -->
@@ -50,12 +30,11 @@ if (!$trang)
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/2.7.0/metisMenu.min.js"></script>
-
         <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
         <script>tinymce.init({selector: 'textarea'});</script>
+
         <!-- JS -->
         <script src="assets/javascript/js-page-admin.js"></script>
-
     </head>
 
     <body>
