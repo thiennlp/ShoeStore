@@ -1,37 +1,9 @@
 <!--Breadcrumb-->
 <?php include("./module/breadcrumb.php"); ?>
-<?php if ($result['image'] || $result['id_category']): ?>
-    <script>
-        $('#modalNotice').modal('show');
-        $(document).on('hide.bs.modal', '#modalNotice', function () {
-            history.back();
-        });
-    </script>
-<?php endif; ?>
-<?php if ($result['image_size']): ?>
-    <script>
-        $('#modalNotice').modal('show');
-    </script>
-<?php endif; ?>
-<?php if ($result['success']): ?>
-    <script>
-        $('#modalNotice').modal('show');
-    </script>
-<?php endif; ?>
-<?php if ($result['fail']): ?>
-    <script>
-        $('#modalNotice').modal('show');
-        $(document).on('hide.bs.modal', '#modalNotice', function () {
-            history.back();
-        });
-    </script>
-<?php endif; ?>
-<?php ?>
-<?php ?>
-<?php ?>
 
+<!--Show data-->
 <div class="row">
-    <?php if ($act == 'add') { ?>
+    <?php if ($act == 'add') : ?>
 
         <div class="col-md-12">
             <div class="panel panel-primary filterable">
@@ -69,18 +41,14 @@
             </div>
             <hr class="hr-no-margin">
         </div>
-        <?php
-    } elseif ($act == 'del') {
-        if ($id_banner > 0) {
-            modalConfirm("banner", "id_banner = '" . $id_banner . "'", "?page=banner");
-            ?>
+    <?php elseif ($act == 'del') : ?>
+        <?php if ($result == TRUE) : ?>
+            <?php modalConfirm("banner", "id_banner = '" . $id_banner . "'", "?page=banner"); ?>
             <script>
                 $('#modalConfirm').modal('show');
             </script>
-            <?php
-        }
-    } else {
-        ?>
+        <?php endif; ?>
+    <?php else : ?>
         <div class="col-md-12">
             <div class="panel panel-primary filterable">
                 <div class="panel-heading">
@@ -98,48 +66,70 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-                        $data = selectData("banner", "1=1", "*");
-                        for ($i = 0; $i < count($data); $i++) {
-                            ?>
-                            <tr class="<?php echo $i % 2 == 0 ? 'row-chan' : 'row-le' ?>">
-                                <td><?php echo $data[$i][0] ?></td>
-                                <td><img class="image-banner" src="<?php echo $data[$i][1]; ?>"></td>
+                        <?php foreach ($data_banner as $key => $banner) : ?>
+                            <tr class="<?php echo $key % 2 == 0 ? 'row-chan' : 'row-le' ?>">
+                                <td><?php echo $banner['id_banner'] ?></td>
+                                <td><img class="image-banner" src="<?php echo $banner['image'] ?>"></td>
                                 <td>
-                                    <?php
-                                    if ($data[$i][2] == 1) {
-                                        ?>
+                                    <?php if ($banner['is_display'] == 1) : ?>
                                         <form class="form-horizontal" role="form" method="POST" action="ajax-update-banner.php">
                                             <input class="change-banner" type="checkbox" checked data-toggle="toggle" value="<?php echo $data[$i][0] ?>">
                                         </form>
-                                        <?php
-                                    } else {
-                                        ?>
+                                    <?php else : ?>
                                         <form class="form-horizontal" role="form" method="POST" action="ajax-update-banner.php">
                                             <input class="change-banner" type="checkbox" data-toggle="toggle" value="<?php echo $data[$i][0] ?>">
                                         </form>
-                                        <?php
-                                    }
-                                    ?>
+                                    <?php endif; ?>
                                 </td>
                                 <td>
-                                    <?php
-                                    $datadm = selectData("category", "id_category = '" . $data[$i][3] . "'", "category");
-                                    echo $datadm[0][0];
-                                    ?>
+                                    <?php $data_category = selectData("category", "id_category = '" . $banner['id_category'] . "'", "category"); ?>
+                                    <?php echo $data_category[0]['category']; ?>
                                 </td>
-                                <td><a href="index.php?page=banner&act=del&id=<?php echo $data[$i][0]; ?>">Delete</a></td>
+                                <td><a href="index.php?page=banner&act=del&id=<?php echo $banner['id_banner'] ?>">Delete</a></td>
                             </tr>
-                            <?php
-                        }
-                        ?>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
             <hr class="hr-no-margin">
         </div>
-        <?php
-    }
-    ?>
+    <?php endif; ?>
 </div>
-<!-- /.row -->
+
+
+<!--Notice error image or id_category-->
+<?php if ($result['image'] || $result['id_category']): ?>
+    <script>
+        $('#modalNotice').modal('show');
+        $(document).on('hide.bs.modal', '#modalNotice', function () {
+            history.back();
+        });
+    </script>
+<?php endif; ?>
+
+<!--Notice error image_size-->
+<?php if ($result['image_size']): ?>
+    <script>
+        $('#modalNotice').modal('show');
+    </script>
+<?php endif; ?>
+
+<!--Notice success-->
+<?php if ($result['success']): ?>
+    <script>
+        $('#modalNotice').modal('show');
+        $(document).on('hide.bs.modal', '#modalNotice', function () {
+            parent.location = "?page=banner";
+        });
+    </script>
+<?php endif; ?>
+
+<!--Notice fail-->
+<?php if ($result['fail']): ?>
+    <script>
+        $('#modalNotice').modal('show');
+        $(document).on('hide.bs.modal', '#modalNotice', function () {
+            history.back();
+        });
+    </script>
+<?php endif; ?>

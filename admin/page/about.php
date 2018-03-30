@@ -1,33 +1,6 @@
 <!--Breadcrumb-->
 <?php include("./module/breadcrumb.php"); ?>
 
-<!--Notice error about or content-->
-<?php if ($result['about'] || $result['content'] || $result['fail']) : ?>
-    <script>
-        $('#modalNotice').modal('show');
-        $(document).on('hide.bs.modal', '#modalNotice', function () {
-            history.back();
-        });
-    </script>
-<?php endif; ?>
-
-<!--Notice error image or image size-->
-<?php if ($result['image_size'] || $result['image']) : ?>
-    <script>
-        $('#modalNotice').modal('show');
-    </script>
-<?php endif; ?>
-
-<!--Notice success-->
-<?php if ($result['success']) : ?>
-    <script>
-        $('#modalNotice').modal('show');
-        $(document).on('hide.bs.modal', '#modalNotice', function () {
-            parent.location = "?page=about";
-        });
-    </script>
-<?php endif; ?>
-
 <!--Show data-->
 <div class="row">
     <?php if ($act == 'add' || $act == 'edit') : ?>
@@ -78,6 +51,7 @@
         <hr class="hr-no-margin">
     <?php elseif ($act == 'del') : ?>
         <?php if ($result) : ?>
+            <?php modalConfirm("about", "id_about = '" . $id_about . "'", "?page=about"); ?>
             <script>
                 $('#modalConfirm').modal('show');
             </script>
@@ -116,3 +90,30 @@
         <hr class="hr-no-margin">
     <?php endif; ?>
 </div>
+
+<!--Notice error about or content-->
+<?php if ($result['about'] || $result['content'] || $result['fail']) : ?>
+    <script>
+        $('#modalNotice').modal('show');
+        $(document).on('hide.bs.modal', '#modalNotice', function () {
+            history.back();
+        });
+    </script>
+<?php endif; ?>
+
+<!--Notice error image or image size-->
+<?php if ($result['image_size'] || $result['image']) : ?>
+    <script>
+        $('#modalNotice').modal('show');
+    </script>
+<?php endif; ?>
+
+<!--Notice success-->
+<?php if ($result['success']) : ?>
+    <script>
+        $('#modalNotice').modal('show');
+        $(document).on('hide.bs.modal', '#modalNotice', function () {
+            parent.location = "?page=about";
+        });
+    </script>
+<?php endif; ?>

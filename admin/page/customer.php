@@ -1,27 +1,17 @@
+<!--Breadcrumb-->
 <?php include("./module/breadcrumb.php"); ?>
-<?php
-$id_customer = intval($_GET['id']);
-$class_alert;
-$content_notice;
-?>
+
+<!--List data-->
 <div class="row">
     <div class="col-md-12">
         <?php
         if ($act == 'add') {
             //-----------------Get data input-----------------------------------------------------
-            $name = $_POST['dk-name'];
-            $email = $_POST['dk-email'];
-            $phone = $_POST['dk-phone'];
-            $address = $_POST['dk-address'];
-            $username = $_POST['dk-usrname'];
-            $password = md5($_POST['dk-psw']);
-            $permission = $_POST['permission'];
-            $confirm = md5($_POST['dk-confirm']);
             //-----------------Event click Add-----------------------------------------------------
             if (isset($_POST['btn-plus'])) {
                 $row_account = selectData("account", "username = '" . $username . "'", "username");
                 if (!$name || !$phone || !$address || !$username || !$password) {
-                    $class_alert = "alert alert-danger";
+                    $class_alert    = "alert alert-danger";
                     $content_notice = "Please input fill info !";
                     modalInfo($class_alert, $content_notice);
                     ?>
@@ -33,7 +23,7 @@ $content_notice;
                     </script>
                     <?php
                 } elseif ($password != $confirm) {
-                    $class_alert = "alert alert-danger";
+                    $class_alert    = "alert alert-danger";
                     $content_notice = "Confirm password wrong !";
                     modalInfo($class_alert, $content_notice);
                     ?>
@@ -45,7 +35,7 @@ $content_notice;
                     </script>
                     <?php
                 } elseif ($email && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    $class_alert = "alert alert-danger";
+                    $class_alert    = "alert alert-danger";
                     $content_notice = "E-mail wrong ! !";
                     modalInfo($class_alert, $content_notice);
                     ?>
@@ -57,7 +47,7 @@ $content_notice;
                     </script>
                     <?php
                 } elseif ($row_account[0][0] == $username) {
-                    $class_alert = "alert alert-danger";
+                    $class_alert    = "alert alert-danger";
                     $content_notice = "Account is exist !";
                     modalInfo($class_alert, $content_notice);
                     ?>
@@ -69,7 +59,7 @@ $content_notice;
                     </script>
                     <?php
                 } elseif (strlen($password) < 8) {
-                    $class_alert = "alert alert-danger";
+                    $class_alert    = "alert alert-danger";
                     $content_notice = "Password need more than 8 characters !";
                     modalInfo($class_alert, $content_notice);
                     ?>
@@ -87,7 +77,7 @@ $content_notice;
                         if ($id_account) {
                             $insert_customer = insertData("customer", "name, email, phone, address, id_account", "'" . $name . "','" . $email . "','" . $phone . "','" . $address . "','" . $id_account[0][0] . "'");
                             if ($insert_customer) {
-                                $class_alert = "alert alert-success";
+                                $class_alert    = "alert alert-success";
                                 $content_notice = "Done !";
                                 modalInfo($class_alert, $content_notice);
                                 ?>
@@ -96,7 +86,7 @@ $content_notice;
                                 </script>
                                 <?php
                             } else {
-                                $class_alert = "alert alert-danger";
+                                $class_alert    = "alert alert-danger";
                                 $content_notice = "Register fail !";
                                 modalInfo($class_alert, $content_notice);
                                 ?>
@@ -110,7 +100,7 @@ $content_notice;
                             }
                         }
                     } else {
-                        $class_alert = "alert alert-danger";
+                        $class_alert    = "alert alert-danger";
                         $content_notice = $mysqli->error;
                         modalInfo($class_alert, $content_notice);
                         ?>
@@ -205,18 +195,18 @@ $content_notice;
             ';
         } elseif ($act == 'edit') {
             //-----------------Get data input-----------------------------------------------------
-            $name = $_POST['dk-name'];
-            $email = $_POST['dk-email'];
-            $phone = $_POST['dk-phone'];
-            $address = $_POST['dk-address'];
-            $username = $_POST['dk-usrname'];
-            $password = md5($_POST['dk-psw']);
+            $name       = $_POST['dk-name'];
+            $email      = $_POST['dk-email'];
+            $phone      = $_POST['dk-phone'];
+            $address    = $_POST['dk-address'];
+            $username   = $_POST['dk-usrname'];
+            $password   = md5($_POST['dk-psw']);
             $permission = $_POST['permission'];
-            $confirm = md5($_POST['dk-confirm']);
+            $confirm    = md5($_POST['dk-confirm']);
             //-------------------Get data from row have selected--------------------------------------------------------
             if ($id_customer) {
                 $row_customer = selectData("customer", "id_customer = '" . $id_customer . "'", "*");
-                $id_account = $row_customer[0][5];
+                $id_account   = $row_customer[0][5];
             }
             if ($id_account) {
                 $row_account = selectData("account", "id_account = '" . $id_account . "'", "*");
@@ -224,7 +214,7 @@ $content_notice;
             //-----------------Event click Add-----------------------------------------------------
             if (isset($_POST['btn-update'])) {
                 if (!$name || !$phone || !$address || !$username || !$password) {
-                    $class_alert = "alert alert-danger";
+                    $class_alert    = "alert alert-danger";
                     $content_notice = "Please input fill info !";
                     modalInfo($class_alert, $content_notice);
                     ?>
@@ -236,7 +226,7 @@ $content_notice;
                     </script>
                     <?php
                 } elseif ($password != $confirm) {
-                    $class_alert = "alert alert-danger";
+                    $class_alert    = "alert alert-danger";
                     $content_notice = "confirm password wrong !";
                     modalInfo($class_alert, $content_notice);
                     ?>
@@ -248,7 +238,7 @@ $content_notice;
                     </script>
                     <?php
                 } elseif ($email && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    $class_alert = "alert alert-danger";
+                    $class_alert    = "alert alert-danger";
                     $content_notice = "E-mail fail ! !";
                     modalInfo($class_alert, $content_notice);
                     ?>
@@ -260,7 +250,7 @@ $content_notice;
                     </script>
                     <?php
                 } elseif (strlen($password) < 8) {
-                    $class_alert = "alert alert-danger";
+                    $class_alert    = "alert alert-danger";
                     $content_notice = "Password need more than 8 characters !";
                     modalInfo($class_alert, $content_notice);
                     ?>
@@ -278,7 +268,7 @@ $content_notice;
                         if ($update_account) {
                             $update_customer = updateData("customer", "name='" . $name . "', email='" . $email . "', phone='" . $phone . "', address='" . $address . "'", "id_customer = '" . $id_customer . "'");
                             if ($update_customer) {
-                                $class_alert = "alert alert-success";
+                                $class_alert    = "alert alert-success";
                                 $content_notice = "Done !";
                                 modalInfo($class_alert, $content_notice);
                                 ?>
@@ -290,7 +280,7 @@ $content_notice;
                                 </script>
                                 <?php
                             } else {
-                                $class_alert = "alert alert-danger";
+                                $class_alert    = "alert alert-danger";
                                 $content_notice = "Update fail !";
                                 modalInfo($class_alert, $content_notice);
                                 ?>
@@ -303,7 +293,7 @@ $content_notice;
                                 <?php
                             }
                         } else {
-                            $class_alert = "alert alert-danger";
+                            $class_alert    = "alert alert-danger";
                             $content_notice = $mysqli->error;
                             modalInfo($class_alert, $content_notice);
                             ?>
@@ -411,7 +401,7 @@ $content_notice;
                         <?php
                     }
                 } else {
-                    $class_alert = "alert alert-danger";
+                    $class_alert    = "alert alert-danger";
                     $content_notice = $mysqli->error;
                     modalInfo($class_alert, $content_notice);
                     ?>
@@ -439,10 +429,10 @@ $content_notice;
                         <tr class="tr-title">
                             <th style="width: 5%">ID</th>
                             <th style="width: 20%">NAME</th>
-                            <th style="width: 20%">EAMIL</th>
+                            <th style="width: 20%">EMAIL</th>
                             <th style="width: 30%">ADDRESS</th>
                             <th style="width: 15%">PHONE</th>
-                            <th style="width: 10%"></th>
+                            <th style="width: 10%">ACTION</th>
                         </tr>
                         <tr class="tr-search">
                             <th style="width: 10%"><input type="text" class="form-control" placeholder="ID" disabled></th>
@@ -454,42 +444,24 @@ $content_notice;
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-                        $data_total = selectData("customer", "1=1", "*");
-                        //-----------------------PHÂN TRANG---------------------------------------//
-                        $total = count($data_total);
-                        $numofpages = $total / $pp_customer;
-                        if ($trang <= 0) {
-                            $page = 1;
-                        } else {
-                            if ($trang <= ceil($numofpages))
-                                $page = $trang;
-                            else
-                                $page = 1;
-                        }
-                        $limitvalue = ($page * $pp_customer) - $pp_customer;
-                        $self = "index.php?page=customer&trang=";
-                        //-----------------------PHÂN TRANG---------------------------------------//
-                        $data = selectData("customer", "1=1 LIMIT $limitvalue,$pp_customer", "*");
-                        for ($i = 0; $i < count($data); $i++) {
-                            ?>
-                            <tr class="<?php echo $i % 2 == 0 ? 'row-chan' : 'row-le' ?>">
-                                <td><?php echo $data[$i][0] ?></td>
-                                <td><?php echo $data[$i][1] ?></td>
-                                <td><?php echo $data[$i][2] ?></td>
-                                <td><?php echo $data[$i][3] ?></td>
-                                <td><?php echo $data[$i][4] ?></td>
-                                <td><a href="index.php?page=customer&act=edit&id=<?php echo $data[$i][0]; ?>">Edit</a> || 
-                                    <a href="index.php?page=customer&act=del&id=<?php echo $data[$i][0]; ?>">Del</a></td>
+                        <?php foreach ($data_customer as $key => $customer) : ?>
+                            <tr class="<?php echo $key % 2 == 0 ? 'row-chan' : 'row-le' ?>">
+                                <td><?php echo $customer['id_customer'] ?></td>
+                                <td><?php echo $customer['name'] ?></td>
+                                <td><?php echo $customer['email'] ?></td>
+                                <td><?php echo $customer['address'] ?></td>
+                                <td><?php echo $customer['phone'] ?></td>
+                                <td>
+                                    <a href="index.php?page=customer&act=edit&id=<?php echo $customer['id_customer'] ?>">Edit</a> || 
+                                    <a href="index.php?page=customer&act=del&id=<?php echo $customer['id_customer'] ?>">Del</a>
+                                </td>
                             </tr>
-                            <?php
-                        }
-                        ?>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
             <div class="panel filterable">
-                <?php echo setPage($self, $total, $pp, $page) ?>
+                <?php echo setPage($data_pagination['self'], $data_pagination['total'], $pp, $data_pagination['page']) ?>
             </div>
             <?php
         }

@@ -1,7 +1,7 @@
 <?php
 include_once("../server/connect.php");
 include_once("../server/common.php");
-include_once("../server/api-admin.php");
+include_once("./server/api-admin.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -127,10 +127,10 @@ include_once("../server/api-admin.php");
                             </ul>
                             <?php
                         } else {
-                            $account = selectData("account", "id_account = '" . $_SESSION['user'] . "'", "username");
+                            $account     = selectData("account", "id_account = '" . $_SESSION['user'] . "'", "username");
                             $row_account = $account;
-                            $user = selectData("user", "id_account = '" . $_SESSION['user'] . "'", "id");
-                            $row_user = $user;
+                            $user        = selectData("user", "id_account = '" . $_SESSION['user'] . "'", "id");
+                            $row_user    = $user;
                             ?>
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                 <i class="fa fa-user fa-fw"></i> <?php echo strtoupper($row_account[0][0]); ?> <i class="fa fa-caret-down"></i>
