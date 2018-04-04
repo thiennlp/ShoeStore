@@ -66,7 +66,8 @@ switch ($page) {
             // Action edit
             case 'edit':
                 $data_customer = selectData("customer", "id_customer = '" . $id_customer . "'", "*");
-                $result        = updatePageCustomer($data, $action_update, $data_customer);
+                $data_account  = selectData("account", "id_account = '" . $data_customer[0]['id_account'] . "'", "*");
+                $result        = updatePageCustomer($data, $action_update, $data_customer, $data_account);
                 break;
 
             // Action delete
